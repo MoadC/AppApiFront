@@ -5,7 +5,7 @@ import {WelcomeComponent} from "./welcome/welcome.component";
 
 const routes: Routes = [
   {path : '' , component : WelcomeComponent,pathMatch : 'full'},
-  {path : 'employee' , component : EmployeDashboardComponent },
+  {path : 'employe' , component : EmployeDashboardComponent },
 
 ];
 
