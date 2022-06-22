@@ -1,13 +1,12 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
   <div class="container">
-    <a class="navbar-brand" routerLink='/' routerLinkActive='active'
+    <a class="navbar-brand " routerLink='/' routerLinkActive='active'
     style="margin-left: -50px"
-    >Dating App</a>
-
+    >App</a>
     <ul class="navbar-nav me-auto">
       <ng-container *ngIf="true">
         <li class="nav-item">
-          <a class="nav-link" routerLink='/members' routerLinkActive='active' >Matches</a>
+          <a class="nav-link" routerLink='/employee' routerLinkActive='active'>Employee Dashboard</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink='/lists' routerLinkActive='active'>Lists</a>
@@ -19,6 +18,7 @@
           <a class="nav-link" routerLink='/admin' routerLinkActive='active' >Admin</a>
         </li>
       </ng-container>
+
       <li class="nav-item">
         <a class="nav-link" routerLink='/errors' routerLinkActive='active' >Errors</a>
       </li>
