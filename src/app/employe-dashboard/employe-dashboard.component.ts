@@ -1,6 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
+import {EmployeeService} from "../_services/employee.service";
+
 
 @Component({
   selector: 'app-employe-dashboard',
@@ -9,16 +11,18 @@ import {MatPaginator} from "@angular/material/paginator";
 })
 export class EmployeDashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private employeService : EmployeeService) { }
 
   ngOnInit(): void {
     // @ts-ignore
-    this.dataSource.paginator = this.paginator;
+    //this.dataSource.paginator = this.paginator;
+    this.employeService.getEmployees();
   }
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator?: MatPaginator ;
+
 }
 
 
