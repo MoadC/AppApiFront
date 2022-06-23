@@ -7,7 +7,7 @@ import {DialogComponent} from "../dialog/dialog.component";
   templateUrl: './nav-bar-veriosn2.component.html',
   styleUrls: ['./nav-bar-veriosn2.component.css']
 })
-export class NavBarVeriosn2Component implements OnInit {
+export class NavBarVersion2Component implements OnInit {
 
   constructor(private dialog : MatDialog) { }
 

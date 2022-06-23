@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './side-bar-veriosn2.component.html',
   styleUrls: ['./side-bar-veriosn2.component.css']
 })
-export class SideBarVeriosn2Component implements OnInit {
+export class SideBarVersion2Component implements OnInit {
   events: string[] = [];
   opened: boolean | undefined;
 
