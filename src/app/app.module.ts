@@ -22,6 +22,12 @@ import { DialogComponent } from './dialog/dialog.component';
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
+import {MatTableModule} from "@angular/material/table";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import { ServiceDashboardComponent } from './service-dashboard/service-dashboard.component';
+import { LocationDashboardComponent } from './location-dashboard/location-dashboard.component';
+import { BeneficierDashboardComponent } from './beneficier-dashboard/beneficier-dashboard.component';
+import { ActiviteDashboardComponent } from './activite-dashboard/activite-dashboard.component';
 
 
 @NgModule({
@@ -34,6 +40,10 @@ import {MatInputModule} from "@angular/material/input";
     NavBarVersion2Component,
     SideBarVersion2Component,
     DialogComponent,
+    ServiceDashboardComponent,
+    LocationDashboardComponent,
+    BeneficierDashboardComponent,
+    ActiviteDashboardComponent,
 
   ],
   imports: [
@@ -50,7 +60,9 @@ import {MatInputModule} from "@angular/material/input";
     MatCheckboxModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
