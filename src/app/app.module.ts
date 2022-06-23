@@ -26,6 +26,7 @@ import { ServiceDashboardComponent } from './service-dashboard/service-dashboard
 import { LocationDashboardComponent } from './location-dashboard/location-dashboard.component';
 import { BeneficierDashboardComponent } from './beneficier-dashboard/beneficier-dashboard.component';
 import { ActiviteDashboardComponent } from './activite-dashboard/activite-dashboard.component';
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { ActiviteDashboardComponent } from './activite-dashboard/activite-dashbo
     MatFormFieldModule,
     MatInputModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
