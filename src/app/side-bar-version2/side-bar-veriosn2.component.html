@@ -1,14 +1,11 @@
 <mat-sidenav-container class="example-container"  *ngIf="true">
     <mat-sidenav #sidenav mode="side" [(opened)]="opened">
-     <div><button mat-button>elem 1</button></div>
-     <div><button mat-button>Basic</button></div>
-     <div><button mat-button>Basic</button></div>
-     <div><button mat-button>Basic</button></div>
-     <div><button mat-button>Basic</button></div>
-     <div><button mat-button>Basic</button></div>
-     <div><button mat-button>Basic</button></div>
-     <div><button mat-button>Basic</button></div>
-     <div><button mat-button>Basic</button></div>
+     <div><button mat-button routerLink="employee">Employee</button></div>
+     <div><button mat-button routerLink="service">Service</button></div>
+     <div><button mat-button routerLink="location">Location</button></div>
+     <div><button mat-button routerLink="beneficiary">Beneficiary</button></div>
+     <div><button mat-button routerLink="activity">Activity</button></div>
+
     </mat-sidenav>
     <mat-sidenav-content>
       <p><button mat-button (click)="sidenav.toggle()"><span class="bi-caret-left"></span></button></p>

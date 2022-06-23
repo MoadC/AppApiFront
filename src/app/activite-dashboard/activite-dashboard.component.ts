@@ -3,14 +3,13 @@ import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 
 @Component({
-  selector: 'app-employe-dashboard',
-  templateUrl: './employe-dashboard.component.html',
-  styleUrls: ['./employe-dashboard.component.css']
+  selector: 'app-activite-dashboard',
+  templateUrl: './activite-dashboard.component.html',
+  styleUrls: ['./activite-dashboard.component.css']
 })
-export class EmployeDashboardComponent implements OnInit {
+export class ActiviteDashboardComponent implements OnInit {
 
   constructor() { }
-
   ngOnInit(): void {
     // @ts-ignore
     this.dataSource.paginator = this.paginator;
@@ -19,9 +18,8 @@ export class EmployeDashboardComponent implements OnInit {
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator?: MatPaginator ;
+
 }
-
-
 
 export interface PeriodicElement {
   name: string;
@@ -39,6 +37,4 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
   {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
   {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-   ];
-
-
+];
