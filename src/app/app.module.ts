@@ -8,12 +8,12 @@ import { SideBarComponent } from './side-bar/side-bar.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { EmployeDashboardComponent } from './employe-dashboard/employe-dashboard.component';
 import { WelcomeComponent } from './welcome/welcome.component';
-import { NavBarVeriosn2Component } from './nav-bar-veriosn2/nav-bar-veriosn2.component';
+import { NavBarVersion2Component } from './nav-bar-version2/nav-bar-veriosn2.component';
 import {MatIconModule} from "@angular/material/icon";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
 import {MatMenuModule} from "@angular/material/menu";
-import {SideBarVeriosn2Component} from './side-bar-veriosn2/side-bar-veriosn2.component';
+import {SideBarVersion2Component} from './side-bar-version2/side-bar-veriosn2.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
 import {FormsModule} from "@angular/forms";
@@ -31,8 +31,8 @@ import {MatInputModule} from "@angular/material/input";
     NavBarComponent,
     EmployeDashboardComponent,
     WelcomeComponent,
-    NavBarVeriosn2Component,
-    SideBarVeriosn2Component,
+    NavBarVersion2Component,
+    SideBarVersion2Component,
     DialogComponent,
 
   ],
