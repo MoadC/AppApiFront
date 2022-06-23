@@ -13,8 +13,8 @@ const routes: Routes = [
   {path : 'employee' , component : EmployeDashboardComponent },
   {path : 'service' , component : ServiceDashboardComponent },
   {path : 'location' , component : LocationDashboardComponent },
-  {path : 'beneficier' , component : BeneficierDashboardComponent },
-  {path : 'acitivie' , component : ActiviteDashboardComponent },
+  {path : 'beneficiary' , component : BeneficierDashboardComponent },
+  {path : 'activity' , component : ActiviteDashboardComponent },
   {path : '**' , redirectTo:'' },
 
 ];
