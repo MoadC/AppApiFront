@@ -28,7 +28,7 @@ export class DialogComponent implements OnInit {
 
 
   addEmploye() {
-    this.EmployeeService.PostEmployee(this.EmployeeObject);
+
   }
   ShowEmploye() {
     this.EmployeeService.getOneEmployees(11);

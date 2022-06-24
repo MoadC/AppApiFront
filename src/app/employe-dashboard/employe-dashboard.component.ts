@@ -2,6 +2,9 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {EmployeeService} from "../_services/employee.service";
+import {EmployeeDialogComponent} from "../_dialogs/employee-dialog/employee-dialog.component";
+import {MatDialog} from "@angular/material/dialog";
+import {Employee} from "../_interfaces/employee";
 
 
 @Component({
@@ -11,33 +14,30 @@ import {EmployeeService} from "../_services/employee.service";
 })
 export class EmployeDashboardComponent implements OnInit {
 
-  constructor(private employeService : EmployeeService) { }
+  constructor(private employeService : EmployeeService,public dialog: MatDialog) { }
 
-  Employees : EmployeeInterface[] = [] ;
   dataSource  : any;
-
-  ngOnInit(): void {
-    this.employeService.getEmployees();
-    this.employeService.employees.subscribe(data=>{
-     this.dataSource =  new MatTableDataSource<EmployeeInterface>(data);
-    })
-    //this.dataSource.paginator = this.paginator;
-  }
-  displayedColumns: string[] = ['firstName','email'];
-
+  displayedColumns: string[] = ['firstName','lastName','email','phoneNumber','employerType','typeEquipe','Edit','Delete'];
   @ViewChild(MatPaginator) paginator?: MatPaginator ;
 
-}
+  ngOnInit(): void {
+   // this.dataSource.paginator = this.paginator;
+    this.getEmployees();
+  }
 
-export interface EmployeeInterface {
-  firstName : '',
-  lastName : '',
-  phoneNumber : '',
-  email : '',
-  employeeType : '',
-  equipeType : '',
-  gender : '',
-  username : '',
+  getEmployees(){
+    this.employeService.getEmployees();
+    this.employeService.employees.subscribe(data=>{
+      this.dataSource =  new MatTableDataSource<Employee>(data);
+    });
+  }
+
+  openDialog() {
+    this.dialog.open(EmployeeDialogComponent,{
+      width : '60vw',
+      height : '70vh'
+    });
+  }
 }
 
 

@@ -14,7 +14,7 @@ import {MatMenuModule} from "@angular/material/menu";
 import {SideBarVersion2Component} from './side-bar-version2/side-bar-veriosn2.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import { DialogComponent } from './_dialogs/dialog/dialog.component';
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
@@ -27,6 +27,7 @@ import { LocationDashboardComponent } from './location-dashboard/location-dashbo
 import { BeneficierDashboardComponent } from './beneficier-dashboard/beneficier-dashboard.component';
 import { ActiviteDashboardComponent } from './activite-dashboard/activite-dashboard.component';
 import {HttpClientModule} from "@angular/common/http";
+import { EmployeeDialogComponent } from './_dialogs/employee-dialog/employee-dialog.component';
 
 
 @NgModule({
@@ -41,27 +42,29 @@ import {HttpClientModule} from "@angular/common/http";
     LocationDashboardComponent,
     BeneficierDashboardComponent,
     ActiviteDashboardComponent,
+    EmployeeDialogComponent,
 
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatMenuModule,
-    MatSidenavModule,
-    MatListModule,
-    FormsModule,
-    MatCheckboxModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatTableModule,
-    MatPaginatorModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatMenuModule,
+        MatSidenavModule,
+        MatListModule,
+        FormsModule,
+        MatCheckboxModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatTableModule,
+        MatPaginatorModule,
+        HttpClientModule,
+        ReactiveFormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
