@@ -12,7 +12,6 @@ import {EmployeeService} from "../../_services/employee.service";
 export class EmployeeDialogComponent implements OnInit {
 
   AddEmployeeForm: FormGroup;
-  status : boolean =false;
 
   constructor(private employeeService : EmployeeService) { }
 
@@ -24,7 +23,8 @@ export class EmployeeDialogComponent implements OnInit {
 
   onSubmit() {
     console.log(this.AddEmployeeForm.value);
-     this.employeeService.PostEmployee(this.AddEmployeeForm.value);
+     this.employeeService.PostEmployee(this.AddEmployeeForm.value).subscribe();
+     this.employeeService.getEmployees();
   }
 
   initForm(){

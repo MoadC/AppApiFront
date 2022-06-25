@@ -14,28 +14,26 @@ import {Employee} from "../_interfaces/employee";
 })
 export class EmployeDashboardComponent implements OnInit {
 
-  constructor(private employeService : EmployeeService,public dialog: MatDialog) { }
+  constructor(private employeeService : EmployeeService,public dialog: MatDialog) { }
 
-  dataSource  : any;
+  employees : Employee[] = [];
+  dataSource =  new MatTableDataSource<Employee>(this.employees);
   displayedColumns: string[] = ['firstName','lastName','email','phoneNumber','employerType','typeEquipe','Edit','Delete'];
   @ViewChild(MatPaginator) paginator?: MatPaginator ;
 
   ngOnInit(): void {
-   // this.dataSource.paginator = this.paginator;
-    this.getEmployees();
-  }
-
-  getEmployees(){
-    this.employeService.getEmployees();
-    this.employeService.employees.subscribe(data=>{
-      this.dataSource =  new MatTableDataSource<Employee>(data);
+    this.employeeService.getEmployees().subscribe(employees => {
+      this.dataSource.data = employees;
     });
   }
 
   openDialog() {
-    this.dialog.open(EmployeeDialogComponent,{
+    const dialogRef = this.dialog.open(EmployeeDialogComponent,{
       width : '60vw',
       height : '70vh'
+    });
+    dialogRef.afterClosed().subscribe( data => {
+        this.ngOnInit();
     });
   }
 }
