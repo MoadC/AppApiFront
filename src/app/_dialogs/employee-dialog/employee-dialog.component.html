@@ -29,7 +29,7 @@
     </mat-form-field>
     <mat-form-field appearance="outline"  style="margin-left: 9px">
       <mat-label>Employee Type</mat-label>
-      <input matInput placeholder="Employee Type" formControlName="employeeType">
+      <input matInput placeholder="Employee Type" formControlName="employerType">
       <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
       <mat-hint>Hint</mat-hint>
     </mat-form-field>
@@ -60,7 +60,8 @@
       <mat-hint>Hint</mat-hint>
     </mat-form-field>
   </p>
-  <button type="submit" mat-raised-button color="primary"
-          style="margin-left: 25vw;margin-top: 3vh;">
-          Submit</button>
+  <mat-dialog-actions align="end">
+    <button  type="button" mat-button [mat-dialog-close]="true">Cancel</button>
+    <button type="submit" mat-raised-button color="primary" [mat-dialog-close]="true" >Submit</button>
+  </mat-dialog-actions>
 </form>

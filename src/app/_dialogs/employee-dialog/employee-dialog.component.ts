@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {EmployeeService} from "../../_services/employee.service";
-import {Employee} from "../../_interfaces/employee";
+
 
 @Component({
   selector: 'app-employee-dialog',
@@ -12,7 +12,7 @@ import {Employee} from "../../_interfaces/employee";
 export class EmployeeDialogComponent implements OnInit {
 
   AddEmployeeForm: FormGroup;
-  Employee : Employee;
+  status : boolean =false;
 
   constructor(private employeeService : EmployeeService) { }
 
