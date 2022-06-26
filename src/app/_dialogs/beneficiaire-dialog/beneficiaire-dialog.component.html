@@ -1,0 +1,72 @@
+<h1>{{editMode ? 'Update Beneficiary' : 'Add Beneficiary'}}</h1>
+<form (ngSubmit)="onSubmit()" [formGroup]="AddBeneficiaryForm" >
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>First Name</mat-label>
+      <input matInput placeholder="First Name" formControlName="firstName">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+    <mat-form-field appearance="outline" style="margin-left: 9px">
+      <mat-label>Last Name</mat-label>
+      <input matInput placeholder="Last Name" formControlName="lastName">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+    <mat-form-field appearance="outline"  style="margin-left: 9px">
+      <mat-label>Gender</mat-label>
+      <input matInput placeholder="Gender" formControlName="gender">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Phone Number</mat-label>
+      <input matInput placeholder="Phone Number" formControlName="phoneNumber">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+    <mat-form-field appearance="outline"  style="margin-left: 9px">
+      <mat-label>Nationality</mat-label>
+      <input matInput placeholder="Nationality" formControlName="nationality">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+    <mat-form-field appearance="outline"  style="margin-left: 9px">
+      <mat-label>Vulnerability</mat-label>
+      <input matInput placeholder="Vulnerability" formControlName="vulnerability">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="Email" formControlName="email">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+    <mat-form-field appearance="outline"  style="margin-left: 9px">
+      <mat-label>Location </mat-label>
+      <input matInput placeholder="Location" formControlName="localId">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+    <mat-form-field appearance="outline"  style="margin-left: 9px">
+      <mat-label>BirthDate </mat-label>
+      <input matInput placeholder="BirthDate" formControlName="birthDate">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+  </p>
+  <mat-dialog-actions align="end">
+    <button  type="button" mat-button [mat-dialog-close]="true">Cancel</button>
+    <button type="submit" mat-raised-button color="primary" [mat-dialog-close]="true"
+    [disabled]="AddBeneficiaryForm.invalid"
+    >
+      {{editMode ? 'Update' : 'Add'}}
+    </button>
+  </mat-dialog-actions>
+</form>
+
