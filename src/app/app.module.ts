@@ -29,6 +29,7 @@ import { ActiviteDashboardComponent } from './activite-dashboard/activite-dashbo
 import {HttpClientModule} from "@angular/common/http";
 import { EmployeeDialogComponent } from './_dialogs/employee-dialog/employee-dialog.component';
 import { ServiceDialogComponent } from './_dialogs/service-dialog/service-dialog.component';
+import { ActivityDialogComponent } from './_dialogs/activity-dialog/activity-dialog.component';
 import { BeneficiaireDialogComponent } from './_dialogs/beneficiaire-dialog/beneficiaire-dialog.component';
 import { LocationDialogComponent } from './_dialogs/location-dialog/location-dialog.component';
 
@@ -47,6 +48,7 @@ import { LocationDialogComponent } from './_dialogs/location-dialog/location-dia
     ActiviteDashboardComponent,
     EmployeeDialogComponent,
     ServiceDialogComponent,
+    ActivityDialogComponent,
     BeneficiaireDialogComponent,
     LocationDialogComponent,
 

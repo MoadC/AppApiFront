@@ -1,6 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
+import {MatDialog} from "@angular/material/dialog";
+import {Activity} from "../_interfaces/activity";
+import {ActivityService} from "../_services/activity.service";
+import {ActivityDialogComponent} from "../_dialogs/activity-dialog/activity-dialog.component";
 
 @Component({
   selector: 'app-activite-dashboard',
@@ -9,32 +13,50 @@ import {MatPaginator} from "@angular/material/paginator";
 })
 export class ActiviteDashboardComponent implements OnInit {
 
-  constructor() { }
-  ngOnInit(): void {
-    // @ts-ignore
-    this.dataSource.paginator = this.paginator;
+  activities : Activity[] = [];
+
+  constructor(private ActivityService: ActivityService, public dialog: MatDialog) {
   }
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
-  @ViewChild(MatPaginator) paginator?: MatPaginator ;
+  dataSource = new MatTableDataSource<Activity>(this.activities);
+  displayedColumns: string[] = ['activityName','activityDate','activityType','activityPlace', 'Edit', 'Delete'];
+  @ViewChild(MatPaginator) paginator?: MatPaginator;
 
+  ngOnInit(): void {
+    this.ActivityService.getActivites().subscribe(activities => {
+      this.dataSource.data = activities;
+    });
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(ActivityDialogComponent, {
+      width: '70vw',
+      height: '50vh'
+    });
+    dialogRef.afterClosed().subscribe(data => {
+      this.ngOnInit();
+    });
+  }
+
+  removeActivity(id: number) {
+    console.log(id);
+    this.ActivityService.DeleteActivity(id).subscribe(data => {
+      this.ngOnInit();
+    });
+  }
+
+  OpenDialogToUpdate(element) {
+    console.log(element);
+    const dialogRef = this.dialog.open(ActivityDialogComponent, {
+      width: '50vw',
+      height: '30vh',
+      data: {
+        element: element
+      }
+    });
+    dialogRef.afterClosed().subscribe(data => {
+      this.ngOnInit();
+    });
+
+  }
 }
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-];

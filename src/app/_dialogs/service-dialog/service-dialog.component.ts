@@ -2,7 +2,6 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AppSerService } from '../../_services/app-ser.service';
-import { EmployeeService } from '../../_services/employee.service';
 
 @Component({
   selector: 'app-service-dialog',
