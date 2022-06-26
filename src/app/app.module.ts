@@ -28,6 +28,7 @@ import { BeneficierDashboardComponent } from './beneficier-dashboard/beneficier-
 import { ActiviteDashboardComponent } from './activite-dashboard/activite-dashboard.component';
 import {HttpClientModule} from "@angular/common/http";
 import { EmployeeDialogComponent } from './_dialogs/employee-dialog/employee-dialog.component';
+import { ServiceDialogComponent } from './_dialogs/service-dialog/service-dialog.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { EmployeeDialogComponent } from './_dialogs/employee-dialog/employee-dia
     BeneficierDashboardComponent,
     ActiviteDashboardComponent,
     EmployeeDialogComponent,
+    ServiceDialogComponent,
 
   ],
     imports: [
