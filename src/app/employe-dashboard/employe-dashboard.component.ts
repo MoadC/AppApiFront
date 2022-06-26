@@ -36,6 +36,28 @@ export class EmployeDashboardComponent implements OnInit {
         this.ngOnInit();
     });
   }
+
+  removeEmployee(id : number) {
+    console.log(id);
+    this.employeeService.DeleteEmployee(id).subscribe(data=>{
+        this.ngOnInit();
+      });
+  }
+
+  OpenDialogToUpdate(element) {
+    console.log(element);
+    const dialogRef = this.dialog.open(EmployeeDialogComponent,{
+      width : '60vw',
+      height : '70vh',
+      data : {
+        element : element
+      }
+    });
+    dialogRef.afterClosed().subscribe( data => {
+      this.ngOnInit();
+    });
+
+  }
 }
 
 

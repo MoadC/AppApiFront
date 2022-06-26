@@ -19,6 +19,12 @@ export class EmployeeService  {
   getOneEmployees(id : number){
     return this.http.get("https://localhost:5001/api/Employer/"+id);
   }
+  DeleteEmployee(id : number) : Observable<Employee[]>{
+    return this.http.delete<Employee[]>("https://localhost:5001/api/Employer/"+id);
+  }
+  UpdateEmployee(id : number , Employee : Employee) : Observable<Employee[]>{
+    return this.http.put<Employee[]>("https://localhost:5001/api/Employer/"+id,Employee);
+  }
 
 
 
