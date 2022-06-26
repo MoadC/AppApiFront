@@ -1,4 +1,4 @@
-<h1>Add Employee</h1>
+<h1>{{editMode ? 'Update Employee' : 'Add Employee'}}</h1>
 <form (ngSubmit)="onSubmit()" [formGroup]="AddEmployeeForm" >
   <p>
     <mat-form-field appearance="outline">

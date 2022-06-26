@@ -3,8 +3,11 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\employe-dashboard"
+    "\\src\\app\\employe-dashboard",
+    "\\src\\app\\nav-bar-version2",
+    "\\src\\app\\_dialogs",
+    "\\src\\app\\_dialogs\\employee-dialog",
+    "\\src\\app\\_services"
   ],
-  "SelectedNode": "\\src\\app\\app.component.html",
   "PreviewInSolutionExplorer": false
 }
