@@ -30,6 +30,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { EmployeeDialogComponent } from './_dialogs/employee-dialog/employee-dialog.component';
 import { ServiceDialogComponent } from './_dialogs/service-dialog/service-dialog.component';
 import { BeneficiaireDialogComponent } from './_dialogs/beneficiaire-dialog/beneficiaire-dialog.component';
+import { LocationDialogComponent } from './_dialogs/location-dialog/location-dialog.component';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { BeneficiaireDialogComponent } from './_dialogs/beneficiaire-dialog/bene
     EmployeeDialogComponent,
     ServiceDialogComponent,
     BeneficiaireDialogComponent,
+    LocationDialogComponent,
 
   ],
     imports: [

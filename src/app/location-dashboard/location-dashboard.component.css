@@ -1,0 +1,12 @@
+table {
+  width: 70vw;
+}
+
+.mat-cell {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.mat-row {
+  height: 6.5vh;
+}
