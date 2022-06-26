@@ -3,7 +3,6 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {EmployeeService} from "../../_services/employee.service";
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
-import {Employee} from "../../_interfaces/employee";
 
 
 @Component({
@@ -60,7 +59,6 @@ export class EmployeeDialogComponent implements OnInit {
       this.Password = this.data.element.password;
 
       }
-
     this.AddEmployeeForm = new FormGroup({
       'firstName': new FormControl(this.First_Name, Validators.required),
       'lastName': new FormControl(this.Last_Name, Validators.required),
