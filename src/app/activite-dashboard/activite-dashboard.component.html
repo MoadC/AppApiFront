@@ -1,31 +1,45 @@
+<h1>List Of Activities</h1>
 <div style="margin-bottom: 1vh;margin-left: 61vw">
-  <button mat-raised-button>Add Activity</button>
+  <button mat-raised-button (click)="openDialog()">Add Activity</button>
 </div>
 <div class="mat-elevation-z8">
-  <table mat-table [dataSource]="dataSource">
-
-    <!-- Position Column -->
-    <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef> No. </th>
-      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-    </ng-container>
+  <table mat-table [dataSource]="dataSource.data">
 
     <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    <ng-container matColumnDef="activityName">
+      <th mat-header-cell *matHeaderCellDef> activity Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.activityName}} </td>
     </ng-container>
 
     <!-- Weight Column -->
-    <ng-container matColumnDef="weight">
-      <th mat-header-cell *matHeaderCellDef> Weight </th>
-      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+    <ng-container matColumnDef="activityDate">
+      <th mat-header-cell *matHeaderCellDef> activity Date </th>
+      <td mat-cell *matCellDef="let element"> {{element.activityDate}} </td>
     </ng-container>
 
     <!-- Symbol Column -->
-    <ng-container matColumnDef="symbol">
-      <th mat-header-cell *matHeaderCellDef> Symbol </th>
-      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+    <ng-container matColumnDef="activityType">
+      <th mat-header-cell *matHeaderCellDef> activity Type </th>
+      <td mat-cell *matCellDef="let element"> {{element.activityType}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="activityPlace">
+      <th mat-header-cell *matHeaderCellDef> activity Place </th>
+      <td mat-cell *matCellDef="let element"> {{element.activityPlace}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Edit">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let element">
+        <i class="bi bi-pencil-square" style="cursor: pointer"
+           (click)="OpenDialogToUpdate(element)"></i>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="Delete">
+      <th mat-header-cell *matHeaderCellDef>  </th>
+      <td mat-cell *matCellDef="let element">
+        <i class="bi bi-x-lg" style="cursor: pointer"
+           (click)="removeActivity(element.id)"></i>
+      </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

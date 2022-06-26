@@ -3,7 +3,6 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {EmployeeService} from "../../_services/employee.service";
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
-import {Employee} from "../../_interfaces/employee";
 
 
 @Component({
@@ -28,14 +27,14 @@ export class EmployeeDialogComponent implements OnInit {
   constructor(private employeeService : EmployeeService,  @Inject(MAT_DIALOG_DATA) public data: any) { }
 
 
-  ngOnInit(): void {   
+  ngOnInit(): void {
     this.initForm();
     console.log(this.AddEmployeeForm.value.password);
   }
 
 
   onSubmit() {
-    if (this.editMode) {      
+    if (this.editMode) {
        this.employeeService.UpdateEmployee(this.data.element.id, this.AddEmployeeForm.value).subscribe();
        this.editMode=false;
        this.ngOnInit();
@@ -60,7 +59,6 @@ export class EmployeeDialogComponent implements OnInit {
       this.Password = this.data.element.password;
 
       }
-
     this.AddEmployeeForm = new FormGroup({
       'firstName': new FormControl(this.First_Name, Validators.required),
       'lastName': new FormControl(this.Last_Name, Validators.required),
@@ -70,7 +68,7 @@ export class EmployeeDialogComponent implements OnInit {
       'typeEquipe': new FormControl(this.Type_Equipe, Validators.required),
       'email': new FormControl(this.Email, Validators.required),
       'userName': new FormControl(this.UserName, Validators.required),
-      'password': new FormControl(this.Password),
+      'password': new FormControl(this.Password)
     });
   }
 }

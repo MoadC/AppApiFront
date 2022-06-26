@@ -1,0 +1,39 @@
+<h1>{{editMode ? 'Update Service' : 'Add Service'}}</h1>
+<form (ngSubmit)="onSubmit()" [formGroup]="AddActivityForm">
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Activity Name</mat-label>
+      <input matInput placeholder="activityName" formControlName="activityName">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Activity Date</mat-label>
+      <input matInput placeholder="activityDate" formControlName="activityDate">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Activity Type</mat-label>
+      <input matInput placeholder="activityType" formControlName="activityType">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Activity Place</mat-label>
+      <input matInput placeholder="activityPlace" formControlName="activityPlace">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+  </p>
+  <mat-dialog-actions align="end">
+    <button type="button" mat-button [mat-dialog-close]="true">Cancel</button>
+    <button type="submit" mat-raised-button color="primary" [mat-dialog-close]="true"
+            [disabled]="AddActivityForm.invalid">
+      {{editMode ? 'Update' : 'Add'}}
+    </button>
+  </mat-dialog-actions>
+</form>
+
