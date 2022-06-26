@@ -29,6 +29,7 @@ import { ActiviteDashboardComponent } from './activite-dashboard/activite-dashbo
 import {HttpClientModule} from "@angular/common/http";
 import { EmployeeDialogComponent } from './_dialogs/employee-dialog/employee-dialog.component';
 import { ServiceDialogComponent } from './_dialogs/service-dialog/service-dialog.component';
+import { ActivityDialogComponent } from './_dialogs/activity-dialog/activity-dialog.component';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { ServiceDialogComponent } from './_dialogs/service-dialog/service-dialog
     ActiviteDashboardComponent,
     EmployeeDialogComponent,
     ServiceDialogComponent,
+    ActivityDialogComponent,
 
   ],
     imports: [

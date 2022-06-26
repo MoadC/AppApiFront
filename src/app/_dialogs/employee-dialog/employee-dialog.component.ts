@@ -27,14 +27,14 @@ export class EmployeeDialogComponent implements OnInit {
   constructor(private employeeService : EmployeeService,  @Inject(MAT_DIALOG_DATA) public data: any) { }
 
 
-  ngOnInit(): void {   
+  ngOnInit(): void {
     this.initForm();
     console.log(this.AddEmployeeForm.value.password);
   }
 
 
   onSubmit() {
-    if (this.editMode) {      
+    if (this.editMode) {
        this.employeeService.UpdateEmployee(this.data.element.id, this.AddEmployeeForm.value).subscribe();
        this.editMode=false;
        this.ngOnInit();
@@ -68,7 +68,7 @@ export class EmployeeDialogComponent implements OnInit {
       'typeEquipe': new FormControl(this.Type_Equipe, Validators.required),
       'email': new FormControl(this.Email, Validators.required),
       'userName': new FormControl(this.UserName, Validators.required),
-      'password': new FormControl(this.Password),
+      'password': new FormControl(this.Password)
     });
   }
 }
