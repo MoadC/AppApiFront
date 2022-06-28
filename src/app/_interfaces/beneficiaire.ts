@@ -1,14 +1,14 @@
 export interface Beneficiaire {
     
-        firstName : '',
-        lastName : '',
-        phoneNumber : '',
-        gender : '',
-        nationalite : '',
-        email : '',
-        birthDate : '',
-        vulnerability :'',
-        localId :number,
+        firstName: string;
+        lastName: string;
+        phoneNumber: string;
+        gender: string;
+        nationalite: string;
+        email: string;
+        birthDate: string;
+        vulnerability: string;
+        localId: number;
        
      
       

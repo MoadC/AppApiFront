@@ -19,7 +19,7 @@ export class ActiviteDashboardComponent implements OnInit {
   }
 
   dataSource = new MatTableDataSource<Activity>(this.activities);
-  displayedColumns: string[] = ['activityName','activityDate','activityType','activityPlace', 'Edit', 'Delete'];
+  displayedColumns: string[] = ['activityName', 'activityDate', 'activityType', 'activityPlace','chefEquipeId', 'Edit', 'Delete'];
   @ViewChild(MatPaginator) paginator?: MatPaginator;
 
   ngOnInit(): void {
@@ -48,8 +48,8 @@ export class ActiviteDashboardComponent implements OnInit {
   OpenDialogToUpdate(element) {
     console.log(element);
     const dialogRef = this.dialog.open(ActivityDialogComponent, {
-      width: '50vw',
-      height: '30vh',
+      width: '70vw',
+      height: '50vh',
       data: {
         element: element
       }

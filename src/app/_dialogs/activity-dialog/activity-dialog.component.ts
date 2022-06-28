@@ -16,7 +16,7 @@ export class ActivityDialogComponent implements OnInit {
   Activity_Date ='';
   Activity_Type ='';
   Activity_Place ='';
-
+  chefEquipeId = 15;
 
   constructor(private activityService: ActivityService, @Inject(MAT_DIALOG_DATA) public data: any) { }
 
@@ -45,6 +45,7 @@ export class ActivityDialogComponent implements OnInit {
       this.Activity_Date = this.data.element.activityDate;
       this.Activity_Type = this.data.element.activityType;
       this.Activity_Place = this.data.element.activityPlace;
+      this.chefEquipeId = this.data.element.chefEquipeId;
 
     }
 
@@ -53,6 +54,7 @@ export class ActivityDialogComponent implements OnInit {
       'activityDate': new FormControl(this.Activity_Date, Validators.required),
       'activityType': new FormControl(this.Activity_Type, Validators.required),
       'activityPlace': new FormControl(this.Activity_Place, Validators.required),
+      'chefEquipeId': new FormControl(this.chefEquipeId, Validators.required),
     });
   }
 }

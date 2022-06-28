@@ -14,7 +14,7 @@ export class ActivityService {
     return this.http.get<Activity[]>("https://localhost:5001/api/Activity/All_Activities");
   }
   PostActivity(Activity: Activity): Observable<Activity[]> {
-    return this.http.post<Activity[]>("https://localhost:5001/api/Service/add_service", Activity);
+    return this.http.post<Activity[]>("https://localhost:5001/api/Activity/Add_Activity", Activity);
   }
   getOneActivity(id: number) {
     return this.http.get("https://localhost:5001/api/Activity/" + id);

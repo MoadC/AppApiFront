@@ -27,6 +27,10 @@
       <th mat-header-cell *matHeaderCellDef> activity Place </th>
       <td mat-cell *matCellDef="let element"> {{element.activityPlace}} </td>
     </ng-container>
+    <ng-container matColumnDef="chefEquipeId">
+      <th mat-header-cell *matHeaderCellDef> Chef Equipe Responsable </th>
+      <td mat-cell *matCellDef="let element"> {{element.chefEquipeId}} </td>
+    </ng-container>
     <ng-container matColumnDef="Edit">
       <th mat-header-cell *matHeaderCellDef>Actions</th>
       <td mat-cell *matCellDef="let element">
