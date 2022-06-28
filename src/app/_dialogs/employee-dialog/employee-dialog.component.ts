@@ -22,7 +22,9 @@ export class EmployeeDialogComponent implements OnInit {
    Type_Equipe ='';
    Email ='';
    UserName ='';
-   Password ='';
+  Password = '';
+
+  types = ['Assistant', 'Chef Equipe'];
 
   constructor(private employeeService : EmployeeService,  @Inject(MAT_DIALOG_DATA) public data: any) { }
 

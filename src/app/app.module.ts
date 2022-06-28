@@ -32,6 +32,7 @@ import { ServiceDialogComponent } from './_dialogs/service-dialog/service-dialog
 import { ActivityDialogComponent } from './_dialogs/activity-dialog/activity-dialog.component';
 import { BeneficiaireDialogComponent } from './_dialogs/beneficiaire-dialog/beneficiaire-dialog.component';
 import { LocationDialogComponent } from './_dialogs/location-dialog/location-dialog.component';
+import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
@@ -71,7 +72,8 @@ import { LocationDialogComponent } from './_dialogs/location-dialog/location-dia
         MatTableModule,
         MatPaginatorModule,
         HttpClientModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MatSelectModule
     ],
   providers: [],
   bootstrap: [AppComponent]
