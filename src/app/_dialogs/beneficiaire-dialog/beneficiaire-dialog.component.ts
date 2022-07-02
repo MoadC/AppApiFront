@@ -21,12 +21,18 @@ export class BeneficiaireDialogComponent implements OnInit {
    Email ='';
    localId : number;
    birthDate='';
-  
+   
+  genders = ['Male', 'Female'];
+  Locations = [];
+  //locationName
 
   constructor(private beneficiaryService : BeneficiaireService,  @Inject(MAT_DIALOG_DATA) public data: any) { }
 
 
-  ngOnInit(): void {   
+  ngOnInit(): void {
+    this.beneficiaryService.getLocations().subscribe(data => {
+      this.Locations = data;
+    })
     this.initForm();
   }
 

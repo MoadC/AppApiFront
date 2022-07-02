@@ -3,6 +3,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {EmployeeService} from "../../_services/employee.service";
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
+import { Service } from '../../_interfaces/service';
 
 
 @Component({
@@ -25,13 +26,21 @@ export class EmployeeDialogComponent implements OnInit {
   Password = '';
 
   types = ['Assistant', 'Chef Equipe'];
+  genders = ['Male', 'Female'];
+  //Services: Service[]= [];
+  Services = [];
+
 
   constructor(private employeeService : EmployeeService,  @Inject(MAT_DIALOG_DATA) public data: any) { }
 
 
   ngOnInit(): void {
     this.initForm();
-    console.log(this.AddEmployeeForm.value.password);
+    //console.log(this.AddEmployeeForm.value.password);
+    this.employeeService.getServices().subscribe(data => {
+      this.Services = data;
+    });
+    //console.log(this.Services);
   }
 
 

@@ -13,11 +13,13 @@
       <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
       <mat-hint>Hint</mat-hint>
     </mat-form-field>
-    <mat-form-field appearance="outline"  style="margin-left: 9px">
+    <mat-form-field appearance="outline" style="margin-left: 9px">
       <mat-label>Gender</mat-label>
-      <input matInput placeholder="Gender" formControlName="gender">
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-      <mat-hint>Hint</mat-hint>
+      <mat-select formControlName="gender">
+        <mat-option *ngFor="let gender of genders" [value]="gender">
+          {{gender}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
   </p>
   <p>
@@ -47,13 +49,15 @@
       <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
       <mat-hint>Hint</mat-hint>
     </mat-form-field>
-    <mat-form-field appearance="outline"  style="margin-left: 9px">
-      <mat-label>Location </mat-label>
-      <input matInput placeholder="Location" formControlName="localId">
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-      <mat-hint>Hint</mat-hint>
+    <mat-form-field appearance="outline" style="margin-left: 9px">
+      <mat-label>Location</mat-label>
+      <mat-select formControlName="localId">
+        <mat-option *ngFor="let location of Locations" [value]="location.id">
+          {{location.locationName}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
-    <mat-form-field appearance="outline"  style="margin-left: 9px">
+    <mat-form-field appearance="outline" style="margin-left: 9px">
       <mat-label>BirthDate </mat-label>
       <input matInput placeholder="BirthDate" formControlName="birthDate">
       <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>

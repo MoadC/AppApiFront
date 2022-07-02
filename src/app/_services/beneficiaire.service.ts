@@ -25,4 +25,8 @@ export class BeneficiaireService {
   UpdateBeneficiary(id : number , beneficiaire : Beneficiaire) : Observable<Beneficiaire[]>{
     return this.http.put<Beneficiaire[]>("https://localhost:5001/api/Immigrant/"+id,beneficiaire);
   }
+
+  getLocations(): Observable<Location[]> {
+    return this.http.get<Location[]>("https://localhost:5001/api/Location/All_Locations");
+  }
 }

@@ -13,11 +13,14 @@
       <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
       <mat-hint>Hint</mat-hint>
     </mat-form-field>
-    <mat-form-field appearance="outline"  style="margin-left: 9px">
+  
+    <mat-form-field appearance="outline" style="margin-left: 9px">
       <mat-label>Gender</mat-label>
-      <input matInput placeholder="Gender" formControlName="gender">
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-      <mat-hint>Hint</mat-hint>
+      <mat-select formControlName="gender">
+        <mat-option *ngFor="let gender of genders" [value]="gender">
+          {{gender}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
   </p>
   <p>
@@ -37,9 +40,11 @@
     </mat-form-field>
     <mat-form-field appearance="outline" style="margin-left: 9px">
       <mat-label>Type Equipe</mat-label>
-      <input matInput placeholder="Type Equipe" formControlName="typeEquipe">
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-      <mat-hint>Hint</mat-hint>
+      <mat-select formControlName="typeEquipe">
+        <mat-option *ngFor="let service of Services" [value]="service.nameService">
+          {{service.nameService}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
   </p>
   <p>
