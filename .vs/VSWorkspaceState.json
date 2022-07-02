@@ -3,13 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\location-dashboard",
+    "\\src\\app\\activite-dashboard",
+    "\\src\\app\\nav-bar-version2",
     "\\src\\app\\_dialogs",
-    "\\src\\app\\_dialogs\\location-dialog",
-    "\\src\\app\\_dialogs\\service-dialog",
+    "\\src\\app\\_dialogs\\activity-dialog",
+    "\\src\\app\\_dialogs\\employee-dialog",
     "\\src\\app\\_interfaces",
     "\\src\\app\\_services"
   ],
-  "SelectedNode": "\\src\\app\\_dialogs\\location-dialog\\location-dialog.component.ts",
+  "SelectedNode": "\\src\\app\\app-routing.module.ts",
   "PreviewInSolutionExplorer": false
 }
