@@ -29,13 +29,21 @@
       <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
       <mat-hint>Hint</mat-hint>
     </mat-form-field>
-    <mat-form-field appearance="outline"  style="margin-left: 9px">
-      <mat-label>Nationality</mat-label>
-      <input matInput placeholder="Nationality" formControlName="nationality">
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-      <mat-hint>Hint</mat-hint>
+    <mat-form-field appearance="outline" style="margin-left: 9px">
+      <mat-label>Country</mat-label>
+      <mat-select formControlName="nationality">
+        <mat-option *ngFor="let country of countries" [value]="country">
+          {{country}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
-    <mat-form-field appearance="outline"  style="margin-left: 9px">
+    <!--<mat-form-field appearance="outline" style="margin-left: 9px">
+    <mat-label>Nationality</mat-label>
+    <input matInput placeholder="Nationality" formControlName="nationality">
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    <mat-hint>Hint</mat-hint>
+  </mat-form-field>-->
+    <mat-form-field appearance="outline" style="margin-left: 9px">
       <mat-label>Vulnerability</mat-label>
       <input matInput placeholder="Vulnerability" formControlName="vulnerability">
       <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
