@@ -13,7 +13,7 @@
       <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
       <mat-hint>Hint</mat-hint>
     </mat-form-field>
-  
+
     <mat-form-field appearance="outline" style="margin-left: 9px">
       <mat-label>Gender</mat-label>
       <mat-select formControlName="gender">
@@ -41,8 +41,8 @@
     <mat-form-field appearance="outline" style="margin-left: 9px">
       <mat-label>Type Equipe</mat-label>
       <mat-select formControlName="typeEquipe">
-        <mat-option *ngFor="let service of Services" [value]="service.nameService">
-          {{service.nameService}}
+        <mat-option *ngFor="let service of Services" [value]="service">
+          {{service}}
         </mat-option>
       </mat-select>
     </mat-form-field>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
-import { DialogComponent } from '../_dialogs/dialog/dialog.component';
+import {AuthGuardService} from "../auth-guard-service";
 
 
 @Component({
@@ -10,15 +10,14 @@ import { DialogComponent } from '../_dialogs/dialog/dialog.component';
 })
 export class NavBarVersion2Component implements OnInit {
 
-  constructor(private dialog : MatDialog) { }
+  constructor(private dialog : MatDialog , private authService : AuthGuardService) { }
 
   ngOnInit(): void {
   }
 
-  openDialog() {
-     this.dialog.open(DialogComponent,{
-       width : '50%',
-       height : '80%'
-     });
+  login() {
+    this.authService.login().subscribe(res=>{
+      console.log(res.token);
+    });
   }
 }
