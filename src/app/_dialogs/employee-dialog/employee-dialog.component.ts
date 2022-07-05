@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {EmployeeService} from "../../_services/employee.service";
-import {MAT_DIALOG_DATA} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 
 
 @Component({
@@ -29,7 +29,9 @@ export class EmployeeDialogComponent implements OnInit {
   Services = ['service1','service2',"service3"];
 
 
-  constructor(private employeeService : EmployeeService,  @Inject(MAT_DIALOG_DATA) public data: any) { }
+  constructor(private employeeService : EmployeeService,
+              public dialogRef: MatDialogRef<EmployeeDialogComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: any) { }
 
 
   ngOnInit(): void {
@@ -44,12 +46,21 @@ export class EmployeeDialogComponent implements OnInit {
 
   onSubmit() {
     if (this.editMode) {
-       this.employeeService.UpdateEmployee(this.data.element.id, this.AddEmployeeForm.value).subscribe();
-       this.editMode=false;
-       this.ngOnInit();
+       this.employeeService.UpdateEmployee(this.data.element.id, this.AddEmployeeForm.value)
+         .subscribe(employees =>{
+           console.log("employees", employees);
+           this.data.employees = employees;
+           this.editMode=false;
+           this.dialogRef.close(employees);
+         });
     }else {
-      this.employeeService.PostEmployee(this.AddEmployeeForm.value).subscribe();
-      this.ngOnInit();
+      this.employeeService.PostEmployee(this.AddEmployeeForm.value)
+        .subscribe(employees =>{
+          console.log("employees", employees);
+          this.data.employees = employees;
+          this.editMode=false;
+          this.dialogRef.close(employees);
+        });
     }
   }
 
@@ -57,6 +68,7 @@ export class EmployeeDialogComponent implements OnInit {
     if (this.data) {
 
       this.editMode = true;
+
       this.First_Name =  this.data.element.firstName;
       this.Last_Name = this.data.element.lastName;
       this.Gender = this.data.element.gender;

@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {EmployeeService} from "../_services/employee.service";
@@ -7,19 +7,21 @@ import {MatDialog} from "@angular/material/dialog";
 import {Employee} from "../_interfaces/employee";
 
 
+
 @Component({
   selector: 'app-employe-dashboard',
   templateUrl: './employe-dashboard.component.html',
-  styleUrls: ['./employe-dashboard.component.css']
+  styleUrls: ['./employe-dashboard.component.css'],
 })
-export class EmployeDashboardComponent implements OnInit {
+export class EmployeDashboardComponent implements OnInit , AfterViewInit{
 
   constructor(private employeeService : EmployeeService,public dialog: MatDialog) { }
 
   employees : Employee[] = [];
   dataSource =  new MatTableDataSource<Employee>(this.employees);
   displayedColumns: string[] = ['firstName','lastName','email','phoneNumber','employerType','typeEquipe','Edit','Delete'];
-  @ViewChild(MatPaginator) paginator?: MatPaginator ;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngOnInit(): void {
     this.employeeService.getEmployees().subscribe(employees => {
@@ -40,7 +42,7 @@ export class EmployeDashboardComponent implements OnInit {
   removeEmployee(id : number) {
     console.log(id);
     this.employeeService.DeleteEmployee(id).subscribe(data=>{
-        this.ngOnInit();
+        this.dataSource.data = data;
       });
   }
 
@@ -50,14 +52,18 @@ export class EmployeDashboardComponent implements OnInit {
       width : '60vw',
       height : '70vh',
       data : {
-        element : element
+        element : element,
       }
     });
     dialogRef.afterClosed().subscribe( data => {
-      this.ngOnInit();
+      this.dataSource.data=data;
     });
 
   }
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
+
 }
 
 
