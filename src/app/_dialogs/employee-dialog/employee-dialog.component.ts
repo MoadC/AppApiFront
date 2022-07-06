@@ -21,7 +21,7 @@ export class EmployeeDialogComponent implements OnInit {
    Type_Equipe ='';
    Email ='';
    UserName ='';
-  Password = '';
+   Password = '';
 
   types = ['Assistant', 'ChefEquipe'];
   genders = ['Male', 'Female'];
@@ -49,7 +49,6 @@ export class EmployeeDialogComponent implements OnInit {
        this.employeeService.UpdateEmployee(this.data.element.id, this.AddEmployeeForm.value)
          .subscribe(employees =>{
            console.log("employees", employees);
-           this.data.employees = employees;
            this.editMode=false;
            this.dialogRef.close(employees);
          });
@@ -57,7 +56,6 @@ export class EmployeeDialogComponent implements OnInit {
       this.employeeService.PostEmployee(this.AddEmployeeForm.value)
         .subscribe(employees =>{
           console.log("employees", employees);
-          this.data.employees = employees;
           this.editMode=false;
           this.dialogRef.close(employees);
         });
