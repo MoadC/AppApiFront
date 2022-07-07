@@ -3,7 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {EmployeeService} from "../../_services/employee.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import { Service } from '../../_interfaces/service';
-
+import Swal from 'sweetalert2/dist/sweetalert2.all.js';
 
 @Component({
   selector: 'app-employee-dialog',
@@ -53,6 +53,15 @@ export class EmployeeDialogComponent implements OnInit {
            this.editMode=false;
            this.dialogRef.close(employees);
          });
+      Swal.fire({
+        toast: true,
+        position: 'top-end',
+        icon: 'success',
+        title: 'Record Modified',
+        text: 'The Employee has been modified in the list',
+        showConfirmButton: false,
+        timer: 1800
+      })
     }else {
       this.employeeService.PostEmployee(this.AddEmployeeForm.value)
         .subscribe(employees =>{
@@ -60,6 +69,15 @@ export class EmployeeDialogComponent implements OnInit {
           this.editMode=false;
           this.dialogRef.close(employees);
         });
+      Swal.fire({
+        toast: true,
+        position: 'top-end',
+        icon: 'success',
+        title: 'New Record Added',
+        text: 'The new Employee has been added to the list',
+        showConfirmButton: false,
+        timer: 1800
+      })
     }
   }
 

@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import Swal from 'sweetalert2';
 import { LocationService } from '../../_services/location.service';
 
 @Component({
@@ -30,9 +31,29 @@ export class LocationDialogComponent implements OnInit {
       this.locationService.UpdateLocation(this.data.element.id, this.AddLocationForm.value).subscribe();
       this.editMode = false;
       this.ngOnInit();
+
+      Swal.fire({
+        toast: true,
+        position: 'top-end',
+        icon: 'success',
+        title: 'Location Modified',
+        text: 'The Location has been modified in the list',
+        showConfirmButton: false,
+        timer: 1800
+      })
     } else {
       this.locationService.PostLocation(this.AddLocationForm.value).subscribe();
       this.ngOnInit();
+
+      Swal.fire({
+        toast: true,
+        position: 'top-end',
+        icon: 'success',
+        title: 'New Location Added',
+        text: 'The Location has been added to the list',
+        showConfirmButton: false,
+        timer: 1800
+      })
     }
   }
 

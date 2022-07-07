@@ -12,6 +12,7 @@ export class AuthComponent implements OnInit {
   constructor(private authService : AuthGuardService ) { }
   isAuthenticated : boolean;
 
+
   authForm : FormGroup
   username : string = '';
   password : string = '';
