@@ -35,7 +35,7 @@ export class EmployeDashboardComponent implements OnInit , AfterViewInit{
       height : '70vh'
     });
     dialogRef.afterClosed().subscribe( data => {
-        this.ngOnInit();
+        this.dataSource.data = data;
     });
   }
 
