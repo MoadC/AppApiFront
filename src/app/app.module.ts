@@ -34,7 +34,6 @@ import { BeneficiaireDialogComponent } from './_dialogs/beneficiaire-dialog/bene
 import { LocationDialogComponent } from './_dialogs/location-dialog/location-dialog.component';
 import { MatSelectModule } from '@angular/material/select';
 import { AuthComponent } from './_auth/auth/auth.component';
-import {AuthService} from "./_auth/auth.service";
 import {AuthGuard} from "./auth-guard";
 
 

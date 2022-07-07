@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {AuthService} from "../auth.service";
+import {AuthGuardService} from "../../auth-guard-service";
 
 @Component({
   selector: 'app-auth',
@@ -9,7 +9,7 @@ import {AuthService} from "../auth.service";
 })
 export class AuthComponent implements OnInit {
 
-  constructor(private authService : AuthService) { }
+  constructor(private authService : AuthGuardService ) { }
   isAuthenticated : boolean;
 
   authForm : FormGroup
@@ -31,12 +31,14 @@ export class AuthComponent implements OnInit {
    })
   }
   login(): void {
-    this.authService.getUser().subscribe(data => {
-      if(data) {
-        console.log(data);
-        console.log(data.role[0]);
+    this.authService.getUser().subscribe(user => {
+      if(user) {
+
+        console.log(user);
+
         this.isAuthenticated = true;
         this.authService.login(this.isAuthenticated);
+        this.authService.setCurrentUser(user);
       }else {
         this.authService.login(false)
       }
