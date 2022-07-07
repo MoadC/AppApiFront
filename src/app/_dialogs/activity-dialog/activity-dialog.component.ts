@@ -1,7 +1,9 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
-import {ActivityService} from "../../_services/activity.service";
+import { ActivityService } from "../../_services/activity.service";
+import Swal from 'sweetalert2/dist/sweetalert2.all.js';
+
 
 @Component({
   selector: 'app-activity-dialog',
@@ -31,9 +33,29 @@ export class ActivityDialogComponent implements OnInit {
       this.activityService.UpdateActivity(this.data.element.id, this.AddActivityForm.value).subscribe();
       this.editMode = false;
       this.ngOnInit();
+
+      Swal.fire({
+        toast: true,
+        position: 'top-end',
+        icon: 'success',
+        title: 'Activity Modified',
+        text: 'The Activity has been modified in the list',
+        showConfirmButton: false,
+        timer: 1800
+      })
     } else {
       this.activityService.PostActivity(this.AddActivityForm.value).subscribe();
       this.ngOnInit();
+
+      Swal.fire({
+        toast: true,
+        position: 'top-end',
+        icon: 'success',
+        title: 'New Activity Added',
+        text: 'The new Activity has been added to the list',
+        showConfirmButton: false,
+        timer: 1800
+      })
     }
   }
 

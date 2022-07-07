@@ -2,6 +2,8 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BeneficiaireService } from 'src/app/_services/beneficiaire.service';
+import Swal from 'sweetalert2/dist/sweetalert2.all.js';
+
 
 @Component({
   selector: 'app-beneficiaire-dialog',
@@ -42,10 +44,30 @@ export class BeneficiaireDialogComponent implements OnInit {
     if (this.editMode) {      
        this.beneficiaryService.UpdateBeneficiary(this.data.element.id, this.AddBeneficiaryForm.value).subscribe();
        this.editMode=false;
-       this.ngOnInit();
+      this.ngOnInit();
+
+      Swal.fire({
+        toast: true,
+        position: 'top-end',
+        icon: 'success',
+        title: 'Beneficiary Modified',
+        text: 'The Beneficiary has been modified in the list',
+        showConfirmButton: false,
+        timer: 1800
+      })
     }else {
       this.beneficiaryService.PostBeneficiary(this.AddBeneficiaryForm.value).subscribe();
       this.ngOnInit();
+
+      Swal.fire({
+        toast: true,
+        position: 'top-end',
+        icon: 'success',
+        title: 'New Beneficiary Added',
+        text: 'The new Beneficiary has been added to the list',
+        showConfirmButton: false,
+        timer: 1800
+      })
     }
   }
 
