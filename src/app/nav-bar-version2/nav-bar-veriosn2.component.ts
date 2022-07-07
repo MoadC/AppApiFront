@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {AuthGuardService} from "../auth-guard-service";
-import {AuthService} from "../_auth/auth.service";
 
 
 @Component({
@@ -11,15 +10,21 @@ import {AuthService} from "../_auth/auth.service";
 })
 export class NavBarVersion2Component implements OnInit {
 
-  constructor(private dialog : MatDialog , private authService : AuthGuardService ,
-              private authServiceLogin : AuthService
+  constructor(private dialog : MatDialog , private authService : AuthGuardService
               ) { }
+  isAuthenticated : boolean;
+
 
   ngOnInit(): void {
+    this.authService.isAuthenticateSubject.subscribe(value => {
+      console.log(this.authService.isAuthenticate);
+      this.isAuthenticated = this.authService.isAuthenticate;
+    });
+
   }
 
-  login(){
-    //this.authServiceLogin.login();
-  }
 
+  logout() {
+    this.authService.logout();
+  }
 }
