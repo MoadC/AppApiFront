@@ -2,6 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {EmployeeService} from "../../_services/employee.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import { Service } from '../../_interfaces/service';
 
 
 @Component({
@@ -25,8 +26,8 @@ export class EmployeeDialogComponent implements OnInit {
 
   types = ['Assistant', 'ChefEquipe'];
   genders = ['Male', 'Female'];
-  //Services: Service[]= [];
-  Services = ['service1','service2',"service3"];
+  Services: Service[]= [];
+  //Services = ['service1','service2',"service3"];
 
 
   constructor(private employeeService : EmployeeService,
@@ -37,9 +38,9 @@ export class EmployeeDialogComponent implements OnInit {
   ngOnInit(): void {
     this.initForm();
     //console.log(this.AddEmployeeForm.value.password);
-    /*this.employeeService.getServices().subscribe(data => {
+    this.employeeService.getServices().subscribe(data => {
       this.Services = data;
-    });*/
+    });
     //console.log(this.Services);
   }
 
@@ -66,7 +67,6 @@ export class EmployeeDialogComponent implements OnInit {
     if (this.data) {
 
       this.editMode = true;
-
       this.First_Name =  this.data.element.firstName;
       this.Last_Name = this.data.element.lastName;
       this.Gender = this.data.element.gender;
@@ -77,7 +77,8 @@ export class EmployeeDialogComponent implements OnInit {
       this.UserName = this.data.element.userName;
       this.Password = this.data.element.password;
 
-      }
+    }
+
     this.AddEmployeeForm = new FormGroup({
       'firstName': new FormControl(this.First_Name, Validators.required),
       'lastName': new FormControl(this.Last_Name, Validators.required),

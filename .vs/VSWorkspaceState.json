@@ -3,14 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
+    "\\src\\app\\activite-dashboard",
+    "\\src\\app\\beneficier-dashboard",
     "\\src\\app\\employe-dashboard",
-    "\\src\\app\\location-dashboard",
+    "\\src\\app\\service-dashboard",
     "\\src\\app\\_dialogs",
-    "\\src\\app\\_dialogs\\beneficiaire-dialog",
-    "\\src\\app\\_dialogs\\location-dialog",
-    "\\src\\app\\_interfaces",
-    "\\src\\app\\_services"
+    "\\src\\app\\_dialogs\\employee-dialog",
+    "\\src\\app\\_dialogs\\location-dialog"
   ],
-  "SelectedNode": "\\src\\app\\location-dashboard\\location-dashboard.component.ts",
+  "SelectedNode": "\\src\\app\\beneficier-dashboard\\beneficier-dashboard.component.ts",
   "PreviewInSolutionExplorer": false
 }
