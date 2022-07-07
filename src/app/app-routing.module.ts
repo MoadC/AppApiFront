@@ -6,15 +6,18 @@ import {ServiceDashboardComponent} from "./service-dashboard/service-dashboard.c
 import {LocationDashboardComponent} from "./location-dashboard/location-dashboard.component";
 import {BeneficierDashboardComponent} from "./beneficier-dashboard/beneficier-dashboard.component";
 import {ActiviteDashboardComponent} from "./activite-dashboard/activite-dashboard.component";
+import {AuthComponent} from "./_auth/auth/auth.component";
+import {AuthGuard} from "./auth-guard";
 
 const routes: Routes = [
 
   {path : '' , component : WelcomeComponent,pathMatch : 'full'},
-  {path : 'employee' , component : EmployeDashboardComponent },
-  {path : 'service' , component : ServiceDashboardComponent },
-  {path : 'location' , component : LocationDashboardComponent },
-  {path : 'beneficiary' , component : BeneficierDashboardComponent },
-  {path : 'activity' , component : ActiviteDashboardComponent },
+  {path : 'auth' , component : AuthComponent},
+  {path : 'employee' , component : EmployeDashboardComponent , canActivate : [AuthGuard] },
+  {path : 'service' , component : ServiceDashboardComponent , canActivate : [AuthGuard]},
+  {path : 'location' , component : LocationDashboardComponent , canActivate : [AuthGuard]},
+  {path : 'beneficiary' , component : BeneficierDashboardComponent , canActivate : [AuthGuard]},
+  {path : 'activity' , component : ActiviteDashboardComponent , canActivate : [AuthGuard] },
   {path : '**' , redirectTo:'' },
 
 ];

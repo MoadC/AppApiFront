@@ -32,11 +32,6 @@ export class AuthGuardService{
      JSON.stringify(employee),{ headers :headers });
   }
 
-  decodeToken(token : string){
-
-  }
-
-
   logout(){
     confirm('are you sure !!!');
     this.loggedIn = false;

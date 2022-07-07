@@ -33,6 +33,9 @@ import { ActivityDialogComponent } from './_dialogs/activity-dialog/activity-dia
 import { BeneficiaireDialogComponent } from './_dialogs/beneficiaire-dialog/beneficiaire-dialog.component';
 import { LocationDialogComponent } from './_dialogs/location-dialog/location-dialog.component';
 import { MatSelectModule } from '@angular/material/select';
+import { AuthComponent } from './_auth/auth/auth.component';
+import {AuthService} from "./_auth/auth.service";
+import {AuthGuard} from "./auth-guard";
 
 
 @NgModule({
@@ -52,6 +55,7 @@ import { MatSelectModule } from '@angular/material/select';
     ActivityDialogComponent,
     BeneficiaireDialogComponent,
     LocationDialogComponent,
+    AuthComponent,
 
   ],
     imports: [
@@ -75,7 +79,7 @@ import { MatSelectModule } from '@angular/material/select';
         ReactiveFormsModule,
         MatSelectModule
     ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
