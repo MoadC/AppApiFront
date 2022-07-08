@@ -20,7 +20,7 @@ export class ActiviteDashboardComponent implements OnInit {
   }
 
   dataSource = new MatTableDataSource<Activity>(this.activities);
-  displayedColumns: string[] = ['activityName', 'activityDate', 'activityType', 'activityPlace','chefEquipeId', 'Edit', 'Delete'];
+  displayedColumns: string[] = ['activityName', 'activityDate', 'activityType', 'activityPlace','employerId', 'Edit', 'Delete'];
   @ViewChild(MatPaginator) paginator?: MatPaginator;
 
   ngOnInit(): void {

@@ -35,6 +35,7 @@ import { LocationDialogComponent } from './_dialogs/location-dialog/location-dia
 import { MatSelectModule } from '@angular/material/select';
 import { AuthComponent } from './_auth/auth/auth.component';
 import {AuthGuard} from "./auth-guard";
+import { UnauthorizedComponent } from './_auth/unauthorized/unauthorized.component';
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import {AuthGuard} from "./auth-guard";
     BeneficiaireDialogComponent,
     LocationDialogComponent,
     AuthComponent,
+    UnauthorizedComponent,
 
   ],
     imports: [

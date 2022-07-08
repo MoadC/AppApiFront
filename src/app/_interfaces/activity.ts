@@ -4,6 +4,6 @@ export interface Activity {
   activityDate: string;
   activityPlace: string;
   activityType: string;
-  chefEquipeId: number;
+  EmployerId : number;
 }
 
