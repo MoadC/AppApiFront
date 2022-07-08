@@ -8,16 +8,21 @@ import {BeneficierDashboardComponent} from "./beneficier-dashboard/beneficier-da
 import {ActiviteDashboardComponent} from "./activite-dashboard/activite-dashboard.component";
 import {AuthComponent} from "./_auth/auth/auth.component";
 import {AuthGuard} from "./auth-guard";
+import {AdminGuard} from "./_guard/admin.guard";
+import {UnauthorizedComponent} from "./_auth/unauthorized/unauthorized.component";
+import {AssistantGuard} from "./_guard/assistant.guard";
+import {ChefEquipeGuard} from "./_guard/chef-equipe.guard";
 
 const routes: Routes = [
 
   {path : '' , component : WelcomeComponent,pathMatch : 'full'},
   {path : 'auth' , component : AuthComponent},
+  {path : 'unauthorized' , component : UnauthorizedComponent , canActivate : [AuthGuard] },
   {path : 'employee' , component : EmployeDashboardComponent , canActivate : [AuthGuard] },
-  {path : 'service' , component : ServiceDashboardComponent , canActivate : [AuthGuard]},
-  {path : 'location' , component : LocationDashboardComponent , canActivate : [AuthGuard]},
-  {path : 'beneficiary' , component : BeneficierDashboardComponent , canActivate : [AuthGuard]},
-  {path : 'activity' , component : ActiviteDashboardComponent , canActivate : [AuthGuard] },
+  {path : 'service' , component : ServiceDashboardComponent , canActivate : [AuthGuard ]},
+  {path : 'location' , component : LocationDashboardComponent , canActivate : [AuthGuard , ChefEquipeGuard]},
+  {path : 'beneficiary' , component : BeneficierDashboardComponent , canActivate : [AuthGuard , AssistantGuard]},
+  {path : 'activity' , component : ActiviteDashboardComponent , canActivate : [AuthGuard ] },
   {path : '**' , redirectTo:'' },
 
 ];

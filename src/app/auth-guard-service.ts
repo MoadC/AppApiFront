@@ -1,7 +1,8 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Observable, Subject} from "rxjs";
+import {Observable, ReplaySubject, Subject} from "rxjs";
 import {Router} from "@angular/router";
+import {User} from "./_interfaces/user";
 
 @Injectable({
   providedIn: 'root'
@@ -12,18 +13,20 @@ export class AuthGuardService{
   constructor(private http : HttpClient , private router : Router ) { }
   isAuthenticate : boolean;
   isAuthenticateSubject = new Subject<boolean>();
+  private currentUserSource = new ReplaySubject<User>(1);
+  currentUser$ = this.currentUserSource.asObservable();
 
-  user = {
+ /* user = {
     userName: "test1",
     password : "App123@"
   }
-
-  getUser() : Observable<any>{
+*/
+  getUser(user : User) : Observable<any>{
 
     const headers = new HttpHeaders().set('Content-Type','application/json');
 
     return this.http.post<any>("https://localhost:5001/api/Account/login",
-      JSON.stringify(this.user),{ headers :headers });
+      JSON.stringify(user),{ headers :headers });
   }
 
   login(value : boolean): boolean {
@@ -43,9 +46,10 @@ export class AuthGuardService{
   setCurrentUser(user: User) {
     user.roles = [];
     const roles = this.getDecodedToken(user.token).role;
+
     Array.isArray(roles) ? user.roles = roles : user.roles.push(roles);
     localStorage.setItem('user', JSON.stringify(user));
-    //this.currentUserSource.next(user);
+    this.currentUserSource.next(user);
   }
 
   logout() {
@@ -53,7 +57,7 @@ export class AuthGuardService{
     confirm('are you sure !!!');
     this.isAuthenticate = false;
     this.router.navigate(['/']);
-    // this.currentUserSource.next(null);
+    this.currentUserSource.next(null);
   }
 
   getDecodedToken(token) {
@@ -61,8 +65,4 @@ export class AuthGuardService{
   }
 
 }
-    export interface User {
-      username : string;
-      token : string;
-      roles : string[];
-    }
+
