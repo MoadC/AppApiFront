@@ -8,30 +8,47 @@
       </div>
 </div>-->
 <mat-toolbar class="mat-elevation-z8">
+  <span routerLink="" style="cursor:pointer">PI Web Application</span>
+
   <button mat-icon-button
           #sidenav mode="side"
           (click)="toggle()">
     <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
     <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
   </button>
-  Responsive side navigation
+
+  <div style="margin-left: 10%">
+    <button mat-button class="marginLeft" routerLink="">Home</button>
+    <button mat-button class="marginLeft" routerLink="">About Us</button>
+    <button mat-button class="marginLeft">Contact</button>
+  </div>
+
+  <span class="example-spacer"></span>
+  <button mat-raised-button color="warn" type="submit" (click)="logout()"
+          *ngIf="isAuthenticated">
+    Logout
+  </button>
+  <button mat-raised-button color="light" routerLink="auth"
+          *ngIf="!isAuthenticated">
+    Login
+  </button>
 </mat-toolbar>
 
 <mat-sidenav-container>
   <mat-sidenav #sidenav="matSidenav" mode="side" class="mat-elevation-z8" [(opened)]="opened">
     <img class="avatar mat-elevation-z8"
-         src="https://source.unsplash.com/c_GmwfHBDzk/200x200" />
+         src="https://media.istockphoto.com/vectors/simple-man-head-icon-set-vector-id1196083861?k=20&m=1196083861&s=612x612&w=0&h=XNRxC4ohwTlL7KBis1Dc_MZASQSKfC9IoBfe2Oq9eL0=" />
 
     <h4 class="name">{{name}}</h4>
     <p class="designation">Occupation : {{role}}</p>
 
     <mat-divider></mat-divider>
 
-    <div><button mat-button class="menu-button" routerLink="employee"> 	<mat-icon>person</mat-icon><span>Employee</span> </button></div>
-     <div><button mat-button class="menu-button" routerLink="service">	<mat-icon> layers</mat-icon><span>Service</span></button></div>
-     <div><button mat-button class="menu-button" routerLink="location">	<mat-icon>location_city</mat-icon><span>Locations</span></button></div>
-     <div><button mat-button class="menu-button" routerLink="beneficiary">	<mat-icon>group</mat-icon><span>Beneficiary</span></button></div>
-     <div><button mat-button class="menu-button" routerLink="activity">	<mat-icon>event_available</mat-icon><span>Activities</span></button></div>
+    <div><button mat-button class="menu-button" routerLink="employee"><mat-icon>person</mat-icon><span>Employee</span> </button></div>
+     <div><button mat-button class="menu-button" routerLink="service"><mat-icon> layers</mat-icon><span>Service</span></button></div>
+     <div><button mat-button class="menu-button" routerLink="location"><mat-icon>location_city</mat-icon><span>Locations</span></button></div>
+     <div><button mat-button class="menu-button" routerLink="beneficiary"><mat-icon>group</mat-icon><span>Beneficiary</span></button></div>
+     <div><button mat-button class="menu-button" routerLink="activity"><mat-icon>event_available</mat-icon><span>Activities</span></button></div>
     <mat-divider></mat-divider>
 
     <button mat-button class="menu-button" routerLink="/help">

@@ -19,19 +19,27 @@ export class AppComponent {
   role = '';
 
 
-
-
   constructor(private authService: AuthGuardService) {
   }
 
+  isAuthenticated: boolean;
+
+  logout(){
+    this.authService.logout();
+  }
+  
+
   ngOnInit() {
-
-
     this.setCurrentUser();
     this.authService.currentUser$.subscribe(data => {
+      console.log(data);
       this.name = data.name;
       this.role = data.roles[0];
     })
+    this.authService.isAuthenticateSubject.subscribe(value => {
+      console.log(this.authService.isAuthenticate);
+      this.isAuthenticated = this.authService.isAuthenticate;
+    });
   }
 
   setCurrentUser() {

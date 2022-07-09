@@ -1,7 +1,16 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.marginLeft {
+  margin-left: 2%;
+}
+
 mat-toolbar {
-  background: #004a9f;
+  background: #002b5c;
   color: white;
 }
+
 
 mat-sidenav {
   margin: 16px;
@@ -14,14 +23,15 @@ mat-sidenav {
   text-align: center;
 }
 
+
 .content {
-  height: calc(100vh - 100px);
-  border-radius: 10px;
-  margin: 16px;
-  margin-left: 32px;
-  padding: 16px;
-  overflow: auto;
-}
+    height: calc(100vh - 100px);
+    border-radius: 10px;
+    margin: 16px;
+    margin-left: 32px;
+    padding: 16px;
+    overflow: auto;
+  }
 
 mat-sidenav-container {
   height: calc(100vh - 65px);
@@ -33,13 +43,14 @@ mat-sidenav-container {
   align-items: center;
   justify-content: flex-start;
   font-size: 1rem;
-  mat-icon
+}
 
+.menu-button > mat-icon
 {
   margin-right: 8px;
 }
 
-}
+
 
 .avatar {
   margin-top: 16px;
@@ -63,4 +74,8 @@ mat-divider {
   margin-top: 16px;
   margin-bottom: 16px;
   background-color: rgba(255, 255, 255, 0.5);
+}
+
+span{
+    margin-left: 10px;
 }

@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable, ReplaySubject, Subject} from "rxjs";
 import {Router} from "@angular/router";
 import {User} from "./_interfaces/user";
+import Swal from "sweetalert2";
 
 @Injectable({
   providedIn: 'root'
@@ -52,13 +53,29 @@ export class AuthGuardService{
     this.currentUserSource.next(user);
   }
 
+
+
   logout() {
-    localStorage.removeItem('user');
-    confirm('are you sure !!!');
-    this.isAuthenticate = false;
-    this.router.navigate(['/']);
-    this.currentUserSource.next(null);
+    Swal.fire({
+      title: 'Are you sure want to log out?',
+      text: 'You will have to authenticate again later!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      confirmButtonText: 'Yes, Log me out!',
+      cancelButtonText: 'No, let me stay'
+    }).then((result) => {
+      if (result.value) {
+        localStorage.removeItem('user');
+        this.isAuthenticate = false;
+        this.router.navigate(['/']);
+        this.currentUserSource.next(null);
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+
+      }
+    })
   }
+
 
   getDecodedToken(token) {
     return JSON.parse(atob(token.split('.')[1]));
