@@ -7,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideBarVersion2Component implements OnInit {
   events: string[] = [];
-  opened: boolean | undefined;
+  opened: boolean = true;
 
-  shouldRun = /(^|.)(stackblitz|webcontainer).(io|com)$/.test(window.location.host);
+  //shouldRun = /(^|.)(stackblitz|webcontainer).(io|com)$/.test(window.location.host);
   constructor() { }
 
   ngOnInit(): void {

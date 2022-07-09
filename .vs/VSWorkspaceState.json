@@ -3,14 +3,9 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\activite-dashboard",
-    "\\src\\app\\beneficier-dashboard",
-    "\\src\\app\\employe-dashboard",
-    "\\src\\app\\service-dashboard",
-    "\\src\\app\\_dialogs",
-    "\\src\\app\\_dialogs\\employee-dialog",
-    "\\src\\app\\_dialogs\\location-dialog"
+    "\\src\\app\\_auth",
+    "\\src\\app\\_auth\\auth"
   ],
-  "SelectedNode": "\\src\\app\\beneficier-dashboard\\beneficier-dashboard.component.ts",
+  "SelectedNode": "\\src\\app\\_auth\\auth",
   "PreviewInSolutionExplorer": false
 }
