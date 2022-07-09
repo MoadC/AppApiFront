@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthGuardService} from "../../auth-guard-service";
+import {User} from "../../_interfaces/user";
 
 @Component({
   selector: 'app-auth',
@@ -10,20 +11,29 @@ import {AuthGuardService} from "../../auth-guard-service";
 export class AuthComponent implements OnInit {
 
   constructor(private authService : AuthGuardService ) { }
-  isAuthenticated : boolean;
+   isAuthenticated : boolean;
 
+
+   user = {
+     userName: "test1",
+     password : "App123@"
+   }
 
   authForm : FormGroup
   username : string = '';
   password : string = '';
 
   ngOnInit(): void {
+     this.authService.currentUser$.subscribe(user =>{
+      this.isAuthenticated = !!user;
+       this.authService.login(this.isAuthenticated);
+     })
     this.initForm();
   }
 
   onSubmit() {
     console.log(this.authForm.value);
-    this.login();
+    this.login(this.authForm.value);
   }
   initForm(){
     this.authForm = new FormGroup({
@@ -31,8 +41,8 @@ export class AuthComponent implements OnInit {
      'password' : new FormControl(this.password,Validators.required)
    })
   }
-  login(): void {
-    this.authService.getUser().subscribe(user => {
+  login(user : User): void {
+     this.authService.getUser(user).subscribe(user => {
       if(user) {
 
         console.log(user);
@@ -44,5 +54,8 @@ export class AuthComponent implements OnInit {
         this.authService.login(false)
       }
     });
+  }
+  getDecodedToken(token) {
+    return JSON.parse(atob(token.split('.')[1]));
   }
 }

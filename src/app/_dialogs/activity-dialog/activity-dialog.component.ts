@@ -3,6 +3,8 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 import { ActivityService } from "../../_services/activity.service";
 import Swal from 'sweetalert2/dist/sweetalert2.all.js';
+import {AuthGuardService} from "../../auth-guard-service";
+
 
 
 @Component({
@@ -18,12 +20,15 @@ export class ActivityDialogComponent implements OnInit {
   Activity_Date ='';
   Activity_Type ='';
   Activity_Place ='';
-  chefEquipeId = 18;
+  employerId  : number;
 
-  constructor(private activityService: ActivityService, @Inject(MAT_DIALOG_DATA) public data: any) { }
+  constructor(private authService : AuthGuardService,private activityService: ActivityService, @Inject(MAT_DIALOG_DATA) public data: any) { }
 
 
   ngOnInit(): void {
+    this.authService.currentUser$.subscribe(user =>{
+      this.employerId = this.getDecodedToken(user.token).nameid;
+    })
     this.initForm();
   }
 
@@ -45,7 +50,7 @@ export class ActivityDialogComponent implements OnInit {
       })
     } else {
       this.activityService.PostActivity(this.AddActivityForm.value).subscribe();
-      this.ngOnInit();
+      console.log(this.AddActivityForm.value);
 
       Swal.fire({
         toast: true,
@@ -67,7 +72,7 @@ export class ActivityDialogComponent implements OnInit {
       this.Activity_Date = this.data.element.activityDate;
       this.Activity_Type = this.data.element.activityType;
       this.Activity_Place = this.data.element.activityPlace;
-      this.chefEquipeId = this.data.element.chefEquipeId;
+      this.employerId = this.data.element.employerId;
 
     }
 
@@ -76,7 +81,10 @@ export class ActivityDialogComponent implements OnInit {
       'activityDate': new FormControl(this.Activity_Date, Validators.required),
       'activityType': new FormControl(this.Activity_Type, Validators.required),
       'activityPlace': new FormControl(this.Activity_Place, Validators.required),
-      'chefEquipeId': new FormControl(this.chefEquipeId, Validators.required),
+      'employerId': new FormControl(this.employerId)
     });
+  }
+  getDecodedToken(token) {
+    return JSON.parse(atob(token.split('.')[1]));
   }
 }

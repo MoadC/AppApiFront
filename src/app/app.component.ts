@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {AuthGuardService} from "./auth-guard-service";
+import {User} from "./_interfaces/user";
 
 @Component({
   selector: 'app-root',
@@ -17,4 +19,18 @@ export class AppComponent {
 
 
 
+
+  constructor(private authService: AuthGuardService) {
+  }
+
+  ngOnInit() {
+    this.setCurrentUser();
+  }
+
+  setCurrentUser() {
+    const user: User = JSON.parse(localStorage.getItem('user'));
+    if (user) {
+      this.authService.setCurrentUser(user);
+    }
+  }
 }
