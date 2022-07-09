@@ -15,7 +15,8 @@ export class AppComponent {
     this.opened = !this.opened;
 }
 
-
+  name = '';
+  role = '';
 
 
 
@@ -24,7 +25,13 @@ export class AppComponent {
   }
 
   ngOnInit() {
+
+
     this.setCurrentUser();
+    this.authService.currentUser$.subscribe(data => {
+      this.name = data.name;
+      this.role = data.roles[0];
+    })
   }
 
   setCurrentUser() {
