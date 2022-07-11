@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -11,7 +11,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.all.js';
   templateUrl: './location-dashboard.component.html',
   styleUrls: ['./location-dashboard.component.css']
 })
-export class LocationDashboardComponent implements OnInit {
+export class LocationDashboardComponent implements OnInit,AfterViewInit {
 
   locations: Location[] = [];
   constructor(private locationService: LocationService, public dialog: MatDialog) { }
@@ -32,16 +32,9 @@ export class LocationDashboardComponent implements OnInit {
       height: '50vh'
     });
     dialogRef.afterClosed().subscribe(data => {
-      this.ngOnInit();
+      this.dataSource.data=data;
     });
   }
-
-  //removeLocation(id: number) {
-  //  console.log(id);
-  //  this.locationService.DeleteLocation(id).subscribe(data => {
-  //    this.ngOnInit();
-  //  });
-  //}
   removeLocation(id: number) {
     Swal.fire({
       title: 'Are you sure want to remove this record?',
@@ -88,9 +81,16 @@ export class LocationDashboardComponent implements OnInit {
       }
     });
     dialogRef.afterClosed().subscribe(data => {
-      this.ngOnInit();
+      this.dataSource.data=data;
     });
 
+  }
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 

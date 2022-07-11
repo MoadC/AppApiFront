@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatDialog} from "@angular/material/dialog";
@@ -12,7 +12,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.all.js';
   templateUrl: './activite-dashboard.component.html',
   styleUrls: ['./activite-dashboard.component.css']
 })
-export class ActiviteDashboardComponent implements OnInit {
+export class ActiviteDashboardComponent implements OnInit,AfterViewInit {
 
   activities : Activity[] = [];
 
@@ -35,17 +35,9 @@ export class ActiviteDashboardComponent implements OnInit {
       height: '50vh'
     });
     dialogRef.afterClosed().subscribe(data => {
-      this.ngOnInit();
+      this.dataSource.data = data;
     });
   }
-
-  //removeActivity(id: number) {
-  //  console.log(id);
-  //  this.ActivityService.DeleteActivity(id).subscribe(data => {
-  //    this.ngOnInit();
-  //  });
-  //}
-
   removeActivity(id: number) {
     Swal.fire({
       title: 'Are you sure want to remove this record?',
@@ -92,8 +84,16 @@ export class ActiviteDashboardComponent implements OnInit {
       }
     });
     dialogRef.afterClosed().subscribe(data => {
-      this.ngOnInit();
+      this.dataSource.data=data;
     });
 
   }
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
 }

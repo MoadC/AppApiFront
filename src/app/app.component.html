@@ -24,12 +24,10 @@
   </div>
 
   <span class="example-spacer"></span>
-  <button mat-raised-button color="warn" type="submit" (click)="logout()"
-          *ngIf="isAuthenticated">
+  <button mat-raised-button color="warn" type="submit" (click)="logout()" *ngIf="isAuthenticated">
     Logout
   </button>
-  <button mat-raised-button color="light" routerLink="auth"
-          *ngIf="!isAuthenticated">
+  <button mat-raised-button color="light" routerLink="auth" *ngIf="!isAuthenticated">
     Login
   </button>
 </mat-toolbar>

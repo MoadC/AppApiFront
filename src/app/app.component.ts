@@ -1,44 +1,40 @@
-import { Component } from '@angular/core';
+import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
 import {AuthGuardService} from "./auth-guard-service";
 import {User} from "./_interfaces/user";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit,OnDestroy,AfterViewInit{
   title = 'AppApiFront';
   opened: boolean = true;
+  currentUser : Subscription;
+  isAuthenticatedSubject : Subscription;
+
 
   toggle() {
     this.opened = !this.opened;
 }
-
   name = '';
   role = '';
-
 
   constructor(private authService: AuthGuardService) {
   }
 
-  isAuthenticated: boolean;
+  isAuthenticated: boolean ;
 
   logout(){
     this.authService.logout();
   }
-  
-
   ngOnInit() {
     this.setCurrentUser();
-    this.authService.currentUser$.subscribe(data => {
+    this.currentUser =  this.authService.currentUser$.subscribe(data => {
       console.log(data);
-      this.name = data.name;
-      this.role = data.roles[0];
-    })
-    this.authService.isAuthenticateSubject.subscribe(value => {
-      console.log(this.authService.isAuthenticate);
-      this.isAuthenticated = this.authService.isAuthenticate;
+      this.name = data?.name;
+      this.role = data?.roles[0];
     });
   }
 
@@ -47,5 +43,20 @@ export class AppComponent {
     if (user) {
       this.authService.setCurrentUser(user);
     }
+  }
+
+  ngOnDestroy(): void {
+    this.currentUser.unsubscribe();
+    this.isAuthenticatedSubject.unsubscribe();
+  }
+
+  ngAfterViewInit(): void {
+    this.isAuthenticatedSubject = this.authService.isAuthenticateSubject.subscribe(value => {
+      setTimeout( () =>
+      {
+        this.isAuthenticated = value
+      } ,100)
+
+    });
   }
 }
