@@ -38,14 +38,6 @@ export class EmployeDashboardComponent implements OnInit , AfterViewInit{
         this.dataSource.data = data;
     });
   }
-
-  /*removeEmployee(id : number) {
-    console.log(id);
-    this.employeeService.DeleteEmployee(id).subscribe(data=>{
-        this.dataSource.data = data;
-      });
-  }*/
-
   removeEmployee(id: number) {
     Swal.fire({
       title: 'Are you sure want to remove this record?',

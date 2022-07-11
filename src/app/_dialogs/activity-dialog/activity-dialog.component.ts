@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {MAT_DIALOG_DATA} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import { ActivityService } from "../../_services/activity.service";
 import Swal from 'sweetalert2/dist/sweetalert2.all.js';
 import {AuthGuardService} from "../../auth-guard-service";
@@ -22,7 +22,8 @@ export class ActivityDialogComponent implements OnInit {
   Activity_Place ='';
   employerId  : number;
 
-  constructor(private authService : AuthGuardService,private activityService: ActivityService, @Inject(MAT_DIALOG_DATA) public data: any) { }
+  constructor(private authService : AuthGuardService,private activityService: ActivityService,
+              public dialogRef: MatDialogRef<ActivityDialogComponent> ,@Inject(MAT_DIALOG_DATA) public data: any) { }
 
 
   ngOnInit(): void {
@@ -35,10 +36,11 @@ export class ActivityDialogComponent implements OnInit {
 
   onSubmit() {
     if (this.editMode) {
-      this.activityService.UpdateActivity(this.data.element.id, this.AddActivityForm.value).subscribe();
-      this.editMode = false;
-      this.ngOnInit();
-
+      this.activityService.UpdateActivity(this.data.element.id, this.AddActivityForm.value).subscribe(activities =>{
+        console.log("activities", activities);
+        this.editMode=false;
+        this.dialogRef.close(activities);
+      });
       Swal.fire({
         toast: true,
         position: 'top-end',
@@ -49,9 +51,11 @@ export class ActivityDialogComponent implements OnInit {
         timer: 1800
       })
     } else {
-      this.activityService.PostActivity(this.AddActivityForm.value).subscribe();
-      console.log(this.AddActivityForm.value);
-
+      this.activityService.PostActivity(this.AddActivityForm.value).subscribe(activities =>{
+        console.log("activities", activities);
+        this.editMode=false;
+        this.dialogRef.close(activities);
+      });
       Swal.fire({
         toast: true,
         position: 'top-end',

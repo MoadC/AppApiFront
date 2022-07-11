@@ -37,11 +37,10 @@ export class EmployeeDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
-    //console.log(this.AddEmployeeForm.value.password);
+
     this.employeeService.getServices().subscribe(data => {
       this.Services = data;
     });
-    //console.log(this.Services);
   }
 
 

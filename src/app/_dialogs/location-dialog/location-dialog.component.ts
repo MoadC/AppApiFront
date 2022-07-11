@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import Swal from 'sweetalert2';
 import { LocationService } from '../../_services/location.service';
 
@@ -18,7 +18,7 @@ export class LocationDialogComponent implements OnInit {
   LocationCity = '';
 
 
-  constructor(private locationService: LocationService, @Inject(MAT_DIALOG_DATA) public data: any) { }
+  constructor(private locationService: LocationService,  public dialogRef: MatDialogRef<LocationDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }
 
 
   ngOnInit(): void {
@@ -28,10 +28,12 @@ export class LocationDialogComponent implements OnInit {
 
   onSubmit() {
     if (this.editMode) {
-      this.locationService.UpdateLocation(this.data.element.id, this.AddLocationForm.value).subscribe();
-      this.editMode = false;
-      this.ngOnInit();
-
+      this.locationService.UpdateLocation(this.data.element.id, this.AddLocationForm.value)
+        .subscribe(locations =>{
+          console.log("locations", locations);
+          this.editMode=false;
+          this.dialogRef.close(locations);
+        });
       Swal.fire({
         toast: true,
         position: 'top-end',
@@ -42,9 +44,11 @@ export class LocationDialogComponent implements OnInit {
         timer: 1800
       })
     } else {
-      this.locationService.PostLocation(this.AddLocationForm.value).subscribe();
-      this.ngOnInit();
-
+      this.locationService.PostLocation(this.AddLocationForm.value) .subscribe(locations =>{
+        console.log("locations", locations);
+        this.editMode=false;
+        this.dialogRef.close(locations);
+      });
       Swal.fire({
         toast: true,
         position: 'top-end',

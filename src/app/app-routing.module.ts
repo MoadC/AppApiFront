@@ -20,7 +20,7 @@ const routes: Routes = [
   {path : 'unauthorized' , component : UnauthorizedComponent , canActivate : [AuthGuard] },
   {path : 'employee' , component : EmployeDashboardComponent , canActivate : [AuthGuard] },
   {path : 'service' , component : ServiceDashboardComponent , canActivate : [AuthGuard ]},
-  {path : 'location' , component : LocationDashboardComponent , canActivate : [AuthGuard , ChefEquipeGuard]},
+  {path : 'location' , component : LocationDashboardComponent , canActivate : [AuthGuard]},
   {path : 'beneficiary' , component : BeneficierDashboardComponent , canActivate : [AuthGuard , AssistantGuard]},
   {path : 'activity' , component : ActiviteDashboardComponent , canActivate : [AuthGuard ] },
   {path : '**' , redirectTo:'' },

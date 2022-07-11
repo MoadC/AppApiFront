@@ -67,14 +67,14 @@
     </mat-form-field>
     <mat-form-field appearance="outline" style="margin-left: 9px">
       <mat-label>BirthDate </mat-label>
-      <input matInput placeholder="BirthDate" formControlName="birthDate">
+      <input matInput type="date" placeholder="BirthDate" formControlName="birthDate">
       <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
       <mat-hint>Hint</mat-hint>
     </mat-form-field>
   </p>
   <mat-dialog-actions align="end">
     <button  type="button" mat-button [mat-dialog-close]="true">Cancel</button>
-    <button type="submit" mat-raised-button color="primary" [mat-dialog-close]="true"
+    <button type="submit" mat-raised-button color="primary"
     [disabled]="AddBeneficiaryForm.invalid"
     >
       {{editMode ? 'Update' : 'Add'}}

@@ -55,7 +55,4 @@ export class AuthComponent implements OnInit {
       }
     });
   }
-  getDecodedToken(token) {
-    return JSON.parse(atob(token.split('.')[1]));
-  }
 }

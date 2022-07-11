@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -13,7 +13,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.all.js';
   templateUrl: './beneficier-dashboard.component.html',
   styleUrls: ['./beneficier-dashboard.component.css']
 })
-export class BeneficierDashboardComponent implements OnInit {
+export class BeneficierDashboardComponent implements OnInit,AfterViewInit {
 
   constructor(private beneficiaryService : BeneficiaireService,public dialog: MatDialog) { }
 
@@ -21,10 +21,16 @@ export class BeneficierDashboardComponent implements OnInit {
   dataSource =  new MatTableDataSource<Beneficiaire>(this.beneficiaries);
   displayedColumns: string[] = ['firstName','lastName','email','phoneNumber','nationality','vulnerability','birthDate','Edit','Delete'];
   @ViewChild(MatPaginator) paginator?: MatPaginator ;
+  @ViewChild('input') input ;
+  result = 'No data matching the filter';
 
   ngOnInit(): void {
     this.beneficiaryService.getBeneficiaries().subscribe(beneficiaries => {
       this.dataSource.data = beneficiaries;
+      if((this.dataSource.data.length === 0)) {
+        this.input.nativeElement.disabled = true;
+        this.result = "No data found !";
+      }
     });
   }
 
@@ -34,17 +40,9 @@ export class BeneficierDashboardComponent implements OnInit {
       height : '70vh'
     });
     dialogRef.afterClosed().subscribe( data => {
-        this.ngOnInit();
+      this.dataSource.data=data;
     });
   }
-
-  //removeBeneficiary(id : number) {
-  //  console.log(id);
-  //  this.beneficiaryService.DeleteBeneficiary(id).subscribe(data=>{
-  //      this.ngOnInit();
-  //    });
-  //}
-
   removeBeneficiary(id: number) {
     Swal.fire({
       title: 'Are you sure want to remove this record?',
@@ -91,9 +89,16 @@ export class BeneficierDashboardComponent implements OnInit {
       }
     });
     dialogRef.afterClosed().subscribe( data => {
-      this.ngOnInit();
+      this.dataSource.data=data;
     });
-
   }
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
 
 }
