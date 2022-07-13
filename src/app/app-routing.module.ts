@@ -10,7 +10,7 @@ import {AuthComponent} from "./_auth/auth/auth.component";
 import {AuthGuard} from "./auth-guard";
 import {UnauthorizedComponent} from "./_auth/unauthorized/unauthorized.component";
 import {AssistantGuard} from "./_guard/assistant.guard";
-import {ChefEquipeGuard} from "./_guard/chef-equipe.guard";
+
 
 const routes: Routes = [
 
@@ -19,7 +19,7 @@ const routes: Routes = [
   {path : 'unauthorized' , component : UnauthorizedComponent , canActivate : [AuthGuard] },
   {path : 'employee' , component : EmployeDashboardComponent , canActivate : [AuthGuard] },
   {path : 'service' , component : ServiceDashboardComponent , canActivate : [AuthGuard ]},
-  {path : 'location' , component : LocationDashboardComponent , canActivate : [AuthGuard , ChefEquipeGuard]},
+  {path : 'location' , component : LocationDashboardComponent , canActivate : [AuthGuard]},
   {path : 'beneficiary' , component : BeneficierDashboardComponent , canActivate : [AuthGuard , AssistantGuard]},
   {path : 'activity' , component : ActiviteDashboardComponent , canActivate : [AuthGuard ] },
   {path : '**' , redirectTo:'' },

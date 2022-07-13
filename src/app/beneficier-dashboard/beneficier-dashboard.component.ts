@@ -6,6 +6,7 @@ import { BeneficiaireDialogComponent } from '../_dialogs/beneficiaire-dialog/ben
 import { Beneficiaire } from '../_interfaces/beneficiaire';
 import { BeneficiaireService } from '../_services/beneficiaire.service';
 import Swal from 'sweetalert2/dist/sweetalert2.all.js';
+import {AuthGuardService} from "../auth-guard-service";
 
 @Component({
   selector: 'app-beneficier-dashboard',
@@ -14,7 +15,9 @@ import Swal from 'sweetalert2/dist/sweetalert2.all.js';
 })
 export class BeneficierDashboardComponent implements OnInit,AfterViewInit {
 
-  constructor(private beneficiaryService : BeneficiaireService,public dialog: MatDialog) { }
+  constructor(private beneficiaryService : BeneficiaireService,
+              public dialog: MatDialog,
+              private authService : AuthGuardService) { }
 
   beneficiaries : Beneficiaire[] = [];
   dataSource =  new MatTableDataSource<Beneficiaire>(this.beneficiaries);
@@ -22,6 +25,7 @@ export class BeneficierDashboardComponent implements OnInit,AfterViewInit {
   @ViewChild(MatPaginator) paginator?: MatPaginator ;
   @ViewChild('input') input ;
   result = 'No data matching the filter';
+  role;
 
   ngOnInit(): void {
     this.beneficiaryService.getBeneficiaries().subscribe(beneficiaries => {
@@ -29,6 +33,12 @@ export class BeneficierDashboardComponent implements OnInit,AfterViewInit {
       if((this.dataSource.data.length === 0)) {
         this.input.nativeElement.disabled = true;
         this.result = "No data found !";
+      }
+    });
+    this.authService.currentUser$.subscribe(user=>{
+      this.role = user.roles[0];
+      if(this.role === 'Assistant'){
+        this.displayedColumns = ['firstName','lastName','email','phoneNumber','nationality','vulnerability','birthDate'];
       }
     });
   }
