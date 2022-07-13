@@ -66,4 +66,9 @@ export class ServiceDialogComponent implements OnInit {
         'nameService': new FormControl(this.Service_Name, Validators.required),
       });
     }
+  CancelDialog() {
+    this.appSer.getServices().subscribe(data=>{
+      this.dialogRef.close(data);
+    });
+  }
 }

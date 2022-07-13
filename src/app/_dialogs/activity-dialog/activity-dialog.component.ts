@@ -56,6 +56,7 @@ export class ActivityDialogComponent implements OnInit {
         this.editMode=false;
         this.dialogRef.close(activities);
       });
+
       Swal.fire({
         toast: true,
         position: 'top-end',
@@ -90,5 +91,10 @@ export class ActivityDialogComponent implements OnInit {
   }
   getDecodedToken(token) {
     return JSON.parse(atob(token.split('.')[1]));
+  }
+  CancelDialog() {
+    this.activityService.getActivites().subscribe(data=>{
+      this.dialogRef.close(data);
+    });
   }
 }

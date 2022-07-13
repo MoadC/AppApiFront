@@ -29,12 +29,11 @@ export class AppComponent implements OnInit,OnDestroy,AfterViewInit{
   logout(){
     this.authService.logout();
   }
-  ngOnInit() {
+  ngOnInit(): void {
     this.setCurrentUser();
-    this.currentUser =  this.authService.currentUser$.subscribe(data => {
-      console.log(data);
-      this.name = data?.name;
-      this.role = data?.roles[0];
+    this.authService.currentUser$.subscribe((user) => {
+      this.name = user?.name;
+      this.role = user?.roles[0];
     });
   }
 
@@ -48,6 +47,7 @@ export class AppComponent implements OnInit,OnDestroy,AfterViewInit{
   ngOnDestroy(): void {
     this.currentUser.unsubscribe();
     this.isAuthenticatedSubject.unsubscribe();
+    location.reload();
   }
 
   ngAfterViewInit(): void {
@@ -55,8 +55,7 @@ export class AppComponent implements OnInit,OnDestroy,AfterViewInit{
       setTimeout( () =>
       {
         this.isAuthenticated = value
-      } ,100)
-
+      } ,0)
     });
   }
 }

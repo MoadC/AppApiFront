@@ -4,13 +4,15 @@
     <mat-form-field appearance="outline">
       <mat-label>Activity Name</mat-label>
       <input matInput placeholder="activityName" formControlName="activityName">
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-icon matSuffix *ngIf="AddActivityForm.get('activityName').valid">sentiment_very_satisfied</mat-icon>
+      <mat-icon matSuffix *ngIf="AddActivityForm.get('activityName').invalid">sentiment_very_dissatisfied</mat-icon>
       <mat-hint>Hint</mat-hint>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Activity Date</mat-label>
-      <input matInput placeholder="activityDate" formControlName="activityDate">
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <input matInput type="date" placeholder="activityDate" formControlName="activityDate">
+      <mat-icon matSuffix *ngIf="AddActivityForm.get('activityDate').valid">sentiment_very_satisfied</mat-icon>
+      <mat-icon matSuffix *ngIf="AddActivityForm.get('activityDate').invalid">sentiment_very_dissatisfied</mat-icon>
       <mat-hint>Hint</mat-hint>
     </mat-form-field>
   </p>
@@ -18,24 +20,26 @@
     <mat-form-field appearance="outline">
       <mat-label>Activity Type</mat-label>
       <input matInput placeholder="activityType" formControlName="activityType">
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-icon matSuffix *ngIf="AddActivityForm.get('activityType').valid">sentiment_very_satisfied</mat-icon>
+      <mat-icon matSuffix *ngIf="AddActivityForm.get('activityType').invalid">sentiment_very_dissatisfied</mat-icon>
       <mat-hint>Hint</mat-hint>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Activity Place</mat-label>
       <input matInput placeholder="activityPlace" formControlName="activityPlace">
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-icon matSuffix *ngIf="AddActivityForm.get('activityPlace').valid">sentiment_very_satisfied</mat-icon>
+      <mat-icon matSuffix *ngIf="AddActivityForm.get('activityPlace').invalid">sentiment_very_dissatisfied</mat-icon>
       <mat-hint>Hint</mat-hint>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>employerId</mat-label>
-      <input matInput placeholder="activityPlace" formControlName="employerId" readonly>
+      <input matInput readonly placeholder="activityPlace" formControlName="employerId">
       <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
       <mat-hint>Hint</mat-hint>
     </mat-form-field>
   </p>
   <mat-dialog-actions align="end">
-    <button type="button" mat-button [mat-dialog-close]="true">Cancel</button>
+    <button type="button" mat-button (click)="CancelDialog()">Cancel</button>
     <button type="submit" mat-raised-button color="primary"
             [disabled]="AddActivityForm.invalid">
       {{editMode ? 'Update' : 'Add'}}

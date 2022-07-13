@@ -75,4 +75,9 @@ export class LocationDialogComponent implements OnInit {
       'locationCity': new FormControl(this.LocationCity, Validators.required),
     });
   }
+  CancelDialog() {
+    this.locationService.getLocations().subscribe(data=>{
+      this.dialogRef.close(data);
+    });
+  }
 }

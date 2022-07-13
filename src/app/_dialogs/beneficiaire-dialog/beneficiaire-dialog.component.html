@@ -4,13 +4,15 @@
     <mat-form-field appearance="outline">
       <mat-label>First Name</mat-label>
       <input matInput placeholder="First Name" formControlName="firstName">
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-icon matSuffix *ngIf="AddBeneficiaryForm.get('firstName').valid">sentiment_very_satisfied</mat-icon>
+      <mat-icon matSuffix *ngIf="AddBeneficiaryForm.get('firstName').invalid">sentiment_very_dissatisfied</mat-icon>
       <mat-hint>Hint</mat-hint>
     </mat-form-field>
     <mat-form-field appearance="outline" style="margin-left: 9px">
       <mat-label>Last Name</mat-label>
       <input matInput placeholder="Last Name" formControlName="lastName">
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-icon matSuffix *ngIf="AddBeneficiaryForm.get('lastName').valid">sentiment_very_satisfied</mat-icon>
+      <mat-icon matSuffix *ngIf="AddBeneficiaryForm.get('lastName').invalid">sentiment_very_dissatisfied</mat-icon>
       <mat-hint>Hint</mat-hint>
     </mat-form-field>
     <mat-form-field appearance="outline" style="margin-left: 9px">
@@ -26,7 +28,8 @@
     <mat-form-field appearance="outline">
       <mat-label>Phone Number</mat-label>
       <input matInput placeholder="Phone Number" formControlName="phoneNumber">
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-icon matSuffix *ngIf="AddBeneficiaryForm.get('phoneNumber').valid">sentiment_very_satisfied</mat-icon>
+      <mat-icon matSuffix *ngIf="AddBeneficiaryForm.get('phoneNumber').invalid">sentiment_very_dissatisfied</mat-icon>
       <mat-hint>Hint</mat-hint>
     </mat-form-field>
     <mat-form-field appearance="outline" style="margin-left: 9px">
@@ -46,7 +49,8 @@
     <mat-form-field appearance="outline" style="margin-left: 9px">
       <mat-label>Vulnerability</mat-label>
       <input matInput placeholder="Vulnerability" formControlName="vulnerability">
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-icon matSuffix *ngIf="AddBeneficiaryForm.get('vulnerability').valid">sentiment_very_satisfied</mat-icon>
+      <mat-icon matSuffix *ngIf="AddBeneficiaryForm.get('vulnerability').invalid">sentiment_very_dissatisfied</mat-icon>
       <mat-hint>Hint</mat-hint>
     </mat-form-field>
   </p>
@@ -54,7 +58,8 @@
     <mat-form-field appearance="outline">
       <mat-label>Email</mat-label>
       <input matInput placeholder="Email" formControlName="email">
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-icon matSuffix *ngIf="AddBeneficiaryForm.get('email').valid">sentiment_very_satisfied</mat-icon>
+      <mat-icon matSuffix *ngIf="AddBeneficiaryForm.get('email').invalid">sentiment_very_dissatisfied</mat-icon>
       <mat-hint>Hint</mat-hint>
     </mat-form-field>
     <mat-form-field appearance="outline" style="margin-left: 9px">
@@ -68,12 +73,13 @@
     <mat-form-field appearance="outline" style="margin-left: 9px">
       <mat-label>BirthDate </mat-label>
       <input matInput type="date" placeholder="BirthDate" formControlName="birthDate">
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-icon matSuffix *ngIf="AddBeneficiaryForm.get('birthDate').valid">sentiment_very_satisfied</mat-icon>
+      <mat-icon matSuffix *ngIf="AddBeneficiaryForm.get('birthDate').invalid">sentiment_very_dissatisfied</mat-icon>
       <mat-hint>Hint</mat-hint>
     </mat-form-field>
   </p>
   <mat-dialog-actions align="end">
-    <button  type="button" mat-button [mat-dialog-close]="true">Cancel</button>
+    <button  type="button" mat-button (click)="CancelDialog()">Cancel</button>
     <button type="submit" mat-raised-button color="primary"
     [disabled]="AddBeneficiaryForm.invalid"
     >

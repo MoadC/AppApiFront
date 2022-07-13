@@ -1,6 +1,4 @@
-export interface Location {
-
+export interface LocationInterface {
   locationName: string;
   LocationCity: string;
-
 }

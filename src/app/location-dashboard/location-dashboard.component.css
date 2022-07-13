@@ -10,3 +10,7 @@ table {
 .mat-row {
   height: 6.5vh;
 }
+th.mat-header-cell, td.mat-cell{
+     text-align: center;
+   }
+
