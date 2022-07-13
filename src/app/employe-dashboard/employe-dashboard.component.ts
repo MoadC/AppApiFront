@@ -6,6 +6,9 @@ import {EmployeeDialogComponent} from "../_dialogs/employee-dialog/employee-dial
 import {MatDialog} from "@angular/material/dialog";
 import {Employee} from "../_interfaces/employee";
 import Swal from 'sweetalert2/dist/sweetalert2.all.js';
+import {Router} from "@angular/router";
+import {FormControl} from "@angular/forms";
+import {formatDate} from "@angular/common";
 
 
 @Component({
@@ -15,24 +18,30 @@ import Swal from 'sweetalert2/dist/sweetalert2.all.js';
 })
 export class EmployeDashboardComponent implements OnInit , AfterViewInit{
 
-  constructor(private employeeService : EmployeeService,public dialog: MatDialog) { }
+  constructor(private employeeService : EmployeeService,public dialog: MatDialog, private router : Router) { }
 
   employees : Employee[] = [];
   dataSource =  new MatTableDataSource<Employee>(this.employees);
   displayedColumns: string[] = ['firstName','lastName','email','phoneNumber','employerType','typeEquipe','Edit','Delete'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild('input') input ;
+  result = 'No data matching the filter';
 
   ngOnInit(): void {
     this.employeeService.getEmployees().subscribe(employees => {
       this.dataSource.data = employees;
+      if((this.dataSource.data.length === 0)) {
+        this.input.nativeElement.disabled = true;
+        this.result = "No data found !";
+      }
     });
   }
 
   openDialog() {
     const dialogRef = this.dialog.open(EmployeeDialogComponent,{
       width : '60vw',
-      height : '70vh'
+      height : '70vh',
     });
     dialogRef.afterClosed().subscribe( data => {
         this.dataSource.data = data;
@@ -104,6 +113,7 @@ export class EmployeDashboardComponent implements OnInit , AfterViewInit{
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+
 
 }
 

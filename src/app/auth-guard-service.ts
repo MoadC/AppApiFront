@@ -68,7 +68,7 @@ export class AuthGuardService{
       if (result.value) {
         localStorage.removeItem('user');
         this.isAuthenticate = false;
-        this.router.navigate(['/']);
+        this.router.navigate(['/auth']);
         this.currentUserSource.next(null);
       } else if (result.dismiss === Swal.DismissReason.cancel) {
 

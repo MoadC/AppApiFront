@@ -20,10 +20,16 @@ export class ServiceDashboardComponent implements OnInit,AfterViewInit {
   dataSource = new MatTableDataSource<Service>(this.services);
   displayedColumns: string[] = ['id', 'nameService','Edit','Delete'];
   @ViewChild(MatPaginator) paginator?: MatPaginator;
+  @ViewChild('input') input ;
+  result = 'No data matching the filter';
 
   ngOnInit(): void {
     this.appSer.getServices().subscribe(services => {
       this.dataSource.data = services;
+      if((this.dataSource.data.length === 0)) {
+        this.input.nativeElement.disabled = true;
+        this.result = "No data found !";
+      }
     });
   }
 

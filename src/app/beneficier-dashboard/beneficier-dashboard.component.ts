@@ -7,7 +7,6 @@ import { Beneficiaire } from '../_interfaces/beneficiaire';
 import { BeneficiaireService } from '../_services/beneficiaire.service';
 import Swal from 'sweetalert2/dist/sweetalert2.all.js';
 
-
 @Component({
   selector: 'app-beneficier-dashboard',
   templateUrl: './beneficier-dashboard.component.html',
@@ -99,6 +98,5 @@ export class BeneficierDashboardComponent implements OnInit,AfterViewInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-
 
 }
