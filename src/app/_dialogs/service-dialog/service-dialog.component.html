@@ -4,12 +4,13 @@
     <mat-form-field appearance="outline">
       <mat-label>Service Name</mat-label>
       <input matInput placeholder="Service Name" formControlName="nameService">
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-icon matSuffix *ngIf="AddServiceForm.get('nameService').valid">sentiment_very_satisfied</mat-icon>
+      <mat-icon matSuffix *ngIf="AddServiceForm.get('nameService').invalid">sentiment_very_dissatisfied</mat-icon>
       <mat-hint>Hint</mat-hint>
     </mat-form-field>
   </p>
   <mat-dialog-actions align="end">
-    <button type="button" mat-button [mat-dialog-close]="true">Cancel</button>
+    <button type="button" mat-button (click)="CancelDialog()">Cancel</button>
     <button type="submit" mat-raised-button color="primary"
             [disabled]="AddServiceForm.invalid">
       {{editMode ? 'Update' : 'Add'}}

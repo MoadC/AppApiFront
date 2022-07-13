@@ -22,10 +22,16 @@ export class ActiviteDashboardComponent implements OnInit,AfterViewInit {
   dataSource = new MatTableDataSource<Activity>(this.activities);
   displayedColumns: string[] = ['activityName', 'activityDate', 'activityType', 'activityPlace','employerId', 'Edit', 'Delete'];
   @ViewChild(MatPaginator) paginator?: MatPaginator;
+  @ViewChild('input') input ;
+  result = 'No data matching the filter';
 
   ngOnInit(): void {
     this.ActivityService.getActivites().subscribe(activities => {
       this.dataSource.data = activities;
+      if((this.dataSource.data.length === 0)) {
+        this.input.nativeElement.disabled = true;
+        this.result = "No data found !";
+      }
     });
   }
 

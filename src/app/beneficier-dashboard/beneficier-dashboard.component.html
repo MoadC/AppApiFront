@@ -4,7 +4,7 @@
 </div>
 <mat-form-field appearance="standard">
   <mat-label>Filter</mat-label>
-  <input matInput (keyup)="applyFilter($event)" placeholder="employee" #input>
+  <input matInput (keyup)="applyFilter($event)" placeholder="beneficiary" #input>
 </mat-form-field>
 
 <div class="mat-elevation-z8">
@@ -41,7 +41,7 @@
     </ng-container>
 
     <ng-container matColumnDef="birthDate">
-        <th mat-header-cell *matHeaderCellDef> birthDate </th>
+        <th mat-header-cell *matHeaderCellDef> Birth Date </th>
         <td mat-cell *matCellDef="let element"> {{element.birthDate}}</td>
       </ng-container>
 

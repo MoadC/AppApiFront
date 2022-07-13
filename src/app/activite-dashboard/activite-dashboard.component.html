@@ -4,7 +4,7 @@
 </div>
 <mat-form-field appearance="standard">
   <mat-label>Filter</mat-label>
-  <input matInput (keyup)="applyFilter($event)" placeholder="employee" #input>
+  <input matInput (keyup)="applyFilter($event)" placeholder="activity" #input>
 </mat-form-field>
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource">
@@ -54,7 +54,7 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
     <tr class="mat-row" *matNoDataRow>
-      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      <td class="mat-cell" colspan="4">{{result}}{{input.value}}</td>
     </tr>
   </table>
 

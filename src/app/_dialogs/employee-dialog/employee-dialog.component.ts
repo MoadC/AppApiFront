@@ -1,9 +1,10 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {EmployeeService} from "../../_services/employee.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import { Service } from '../../_interfaces/service';
+import {Service} from '../../_interfaces/service';
 import Swal from 'sweetalert2/dist/sweetalert2.all.js';
+
 
 @Component({
   selector: 'app-employee-dialog',
@@ -14,6 +15,7 @@ export class EmployeeDialogComponent implements OnInit {
 
    editMode : boolean = false;
    AddEmployeeForm: FormGroup;
+   @ViewChild('pass') pass;
    First_Name ='';
    Last_Name ='';
    Gender ='';
@@ -23,10 +25,12 @@ export class EmployeeDialogComponent implements OnInit {
    Email ='';
    UserName ='';
    Password = '';
+   getuserName : boolean = false;
 
   types = ['Assistant', 'ChefEquipe'];
   genders = ['Male', 'Female'];
   Services: Service[]= [];
+  usernames : any[] = [];
   //Services = ['service1','service2',"service3"];
 
 
@@ -37,12 +41,10 @@ export class EmployeeDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
-
     this.employeeService.getServices().subscribe(data => {
       this.Services = data;
     });
   }
-
 
   onSubmit() {
     if (this.editMode) {
@@ -82,7 +84,6 @@ export class EmployeeDialogComponent implements OnInit {
 
   initForm(){
     if (this.data) {
-
       this.editMode = true;
       this.First_Name =  this.data.element.firstName;
       this.Last_Name = this.data.element.lastName;
@@ -103,9 +104,26 @@ export class EmployeeDialogComponent implements OnInit {
       'phoneNumber': new FormControl(this.Phone_Number, Validators.required),
       'employerType': new FormControl(this.EmployeeType, Validators.required),
       'typeEquipe': new FormControl(this.Type_Equipe, Validators.required),
-      'email': new FormControl(this.Email, Validators.required),
-      'userName': new FormControl(this.UserName, Validators.required),
-      'password': new FormControl(this.Password)
+      'email': new FormControl(this.Email, [Validators.required,Validators.email]),
+      'userName': new FormControl(this.UserName, [Validators.required]),
+      'password': new FormControl(this.Password , Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&]).{6,12}$'))
     });
   }
+
+  CancelDialog() {
+    this.employeeService.getEmployees().subscribe(data=>{
+      this.dialogRef.close(data);
+    });
+  }
+
+  showPassword() {
+    if(this.pass.nativeElement.type === 'password'){
+      this.pass.nativeElement.type = 'text';
+    } else{
+      this.pass.nativeElement.type = 'password';
+    }
+  }
+
+
+
 }

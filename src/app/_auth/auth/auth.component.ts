@@ -12,7 +12,8 @@ export class AuthComponent implements OnInit {
 
   constructor(private authService : AuthGuardService ) { }
    isAuthenticated : boolean;
-
+  name = '';
+  role = '';
 
    user = {
      userName: "test1",
@@ -25,7 +26,9 @@ export class AuthComponent implements OnInit {
 
   ngOnInit(): void {
      this.authService.currentUser$.subscribe(user =>{
-      this.isAuthenticated = !!user;
+       this.name = user?.name;
+       this.role = user?.roles[0];
+       this.isAuthenticated = !!user;
        this.authService.login(this.isAuthenticated);
      })
     this.initForm();
@@ -34,6 +37,7 @@ export class AuthComponent implements OnInit {
   onSubmit() {
     console.log(this.authForm.value);
     this.login(this.authForm.value);
+    this.authForm.reset();
   }
   initForm(){
     this.authForm = new FormGroup({

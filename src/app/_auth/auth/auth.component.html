@@ -13,4 +13,21 @@
     </form>
   </div>
 </div>
-<ng-template #test style="margin-left: 50%;margin-top: 50%"><p>rak dakhl !!! </p></ng-template>
+<ng-template #test style="margin-left: 50%;margin-top: 50%"><div>
+  <h1>
+    Welcome {{name}},<br>
+    i hope you having a good day.
+    you should have access to the following sections :
+  </h1>
+</div>
+  <ng-container *ngIf="role === 'Assistant'">
+
+  </ng-container>
+  <ng-container *ngIf="role === 'ChefEquipe'">
+
+  </ng-container>
+  <ng-container *ngIf="role === 'Admin'">
+
+  </ng-container>
+
+</ng-template>

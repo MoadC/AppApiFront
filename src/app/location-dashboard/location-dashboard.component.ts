@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { LocationDialogComponent } from '../_dialogs/location-dialog/location-dialog.component';
 import { LocationService } from '../_services/location.service';
 import Swal from 'sweetalert2/dist/sweetalert2.all.js';
+import {LocationInterface} from "../_interfaces/locationInterface";
 
 @Component({
   selector: 'app-location-dashboard',
@@ -13,16 +14,22 @@ import Swal from 'sweetalert2/dist/sweetalert2.all.js';
 })
 export class LocationDashboardComponent implements OnInit,AfterViewInit {
 
-  locations: Location[] = [];
+  locations: LocationInterface[] = [];
   constructor(private locationService: LocationService, public dialog: MatDialog) { }
 
-  dataSource = new MatTableDataSource<Location>(this.locations);
+  dataSource = new MatTableDataSource<LocationInterface>(this.locations);
   displayedColumns: string[] = ['locationName', 'locationCity', 'Edit', 'Delete'];
   @ViewChild(MatPaginator) paginator?: MatPaginator;
+  @ViewChild('input') input ;
+  result = 'No data matching the filter';
 
   ngOnInit(): void {
     this.locationService.getLocations().subscribe(locations => {
       this.dataSource.data = locations;
+      if((this.dataSource.data.length === 0)) {
+        this.input.nativeElement.disabled = true;
+        this.result = "No data found !";
+      }
     });
   }
 
