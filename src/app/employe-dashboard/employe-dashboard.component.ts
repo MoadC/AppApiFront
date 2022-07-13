@@ -40,6 +40,7 @@ export class EmployeDashboardComponent implements OnInit , AfterViewInit{
 
   openDialog() {
     const dialogRef = this.dialog.open(EmployeeDialogComponent,{
+      disableClose: true,
       width : '60vw',
       height : '70vh',
     });
@@ -95,6 +96,7 @@ export class EmployeDashboardComponent implements OnInit , AfterViewInit{
   OpenDialogToUpdate(element) {
     console.log(element);
     const dialogRef = this.dialog.open(EmployeeDialogComponent,{
+      disableClose: true,
       width : '60vw',
       height : '70vh',
       data : {

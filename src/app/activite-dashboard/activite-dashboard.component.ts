@@ -37,6 +37,7 @@ export class ActiviteDashboardComponent implements OnInit,AfterViewInit {
 
   openDialog() {
     const dialogRef = this.dialog.open(ActivityDialogComponent, {
+      disableClose: true,
       width: '70vw',
       height: '50vh'
     });
@@ -83,6 +84,7 @@ export class ActiviteDashboardComponent implements OnInit,AfterViewInit {
   OpenDialogToUpdate(element) {
     console.log(element);
     const dialogRef = this.dialog.open(ActivityDialogComponent, {
+      disableClose: true,
       width: '70vw',
       height: '50vh',
       data: {

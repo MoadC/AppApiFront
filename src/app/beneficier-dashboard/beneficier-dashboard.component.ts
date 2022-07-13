@@ -35,6 +35,7 @@ export class BeneficierDashboardComponent implements OnInit,AfterViewInit {
 
   openDialog() {
     const dialogRef = this.dialog.open(BeneficiaireDialogComponent,{
+      disableClose: true,
       width : '60vw',
       height : '70vh'
     });
@@ -81,6 +82,7 @@ export class BeneficierDashboardComponent implements OnInit,AfterViewInit {
   OpenDialogToUpdate(element) {
     console.log(element);
     const dialogRef = this.dialog.open(BeneficiaireDialogComponent,{
+      disableClose: true,
       width : '60vw',
       height : '70vh',
       data : {
