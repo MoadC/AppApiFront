@@ -36,6 +36,15 @@ export class EmployeDashboardComponent implements OnInit , AfterViewInit{
     });
     dialogRef.afterClosed().subscribe( data => {
         this.dataSource.data = data;
+        Swal.fire({
+        toast: true,
+        position: 'top-end',
+        icon: 'success',
+        title: 'New Record Added',
+        text: 'The new Employee has been added to the list',
+        showConfirmButton: false,
+        timer: 1800
+      })
     });
   }
   removeEmployee(id: number) {
