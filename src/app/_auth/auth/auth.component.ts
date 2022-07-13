@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthGuardService} from "../../auth-guard-service";
 import {User} from "../../_interfaces/user";
@@ -11,6 +11,7 @@ import {User} from "../../_interfaces/user";
 export class AuthComponent implements OnInit {
 
   constructor(private authService : AuthGuardService ) { }
+  @ViewChild('pass') pass;
    isAuthenticated : boolean;
   name = '';
   role = '';
@@ -23,6 +24,7 @@ export class AuthComponent implements OnInit {
   authForm : FormGroup
   username : string = '';
   password : string = '';
+  hide: boolean = true;
 
   ngOnInit(): void {
      this.authService.currentUser$.subscribe(user =>{
@@ -58,5 +60,13 @@ export class AuthComponent implements OnInit {
         this.authService.login(false)
       }
     });
+  }
+
+  showPassword() {
+    if(this.pass.nativeElement.type === 'password'){
+      this.pass.nativeElement.type = 'text';
+    } else{
+      this.pass.nativeElement.type = 'password';
+    }
   }
 }
