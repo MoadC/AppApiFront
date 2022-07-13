@@ -35,6 +35,7 @@ export class ServiceDashboardComponent implements OnInit,AfterViewInit {
 
   openDialog() {
     const dialogRef = this.dialog.open(ServiceDialogComponent, {
+      disableClose: true,
       width: '50vw',
       height: '30vh'
     });
@@ -81,6 +82,7 @@ export class ServiceDashboardComponent implements OnInit,AfterViewInit {
   OpenDialogToUpdate(element) {
     console.log(element);
     const dialogRef = this.dialog.open(ServiceDialogComponent, {
+      disableClose: true,
       width: '50vw',
       height: '30vh',
       data: {
