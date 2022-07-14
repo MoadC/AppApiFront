@@ -38,8 +38,8 @@ export class ActiviteDashboardComponent implements OnInit,AfterViewInit {
   openDialog() {
     const dialogRef = this.dialog.open(ActivityDialogComponent, {
       disableClose: true,
-      width: '70vw',
-      height: '50vh'
+      width: '40vw',
+      height: '35vh'
     });
     dialogRef.afterClosed().subscribe(data => {
       this.dataSource.data = data;
