@@ -28,16 +28,22 @@ html,
 body {
   height: 100%;
   background: linear-gradient(to top left, #333, #AAA);
+
 }
 
 body {
   display: -ms-flexbox;
   display: flex;
-  color: #fff;
+  color: rgb(0, 0, 0);
   text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
   box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
 }
 
+.bgimg{
+    background: url(src\assets\Unity2.jpg);
+    background-size: cover;
+    background-position: center; 
+}
 .cover-container {
   max-width: 42em;
 }
@@ -102,5 +108,5 @@ body {
  * Footer
  */
 .mastfoot {
-  color: rgba(255, 255, 255, .5);
+  color: rgba(24, 15, 15, 0.5);
 }
