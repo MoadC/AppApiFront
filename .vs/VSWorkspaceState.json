@@ -3,9 +3,13 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\_auth",
-    "\\src\\app\\_auth\\auth"
+    "\\src\\app\\activite-dashboard",
+    "\\src\\app\\beneficier-dashboard",
+    "\\src\\app\\employe-dashboard",
+    "\\src\\app\\location-dashboard",
+    "\\src\\app\\nav-bar-version2",
+    "\\src\\app\\service-dashboard",
+    "\\src\\app\\_auth"
   ],
-  "SelectedNode": "\\src\\app\\_auth\\auth",
   "PreviewInSolutionExplorer": false
 }

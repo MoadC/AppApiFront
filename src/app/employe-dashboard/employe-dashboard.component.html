@@ -1,6 +1,6 @@
 <h1 style="margin-bottom: 7vh">List Of Employes</h1>
 <div style="margin-bottom: -7vh; margin-left: 70%;">
-  <button mat-raised-button style="" (click)="openDialog()"><mat-icon>person_add</mat-icon>Add Employee</button>
+  <button mat-raised-button (click)="openDialog()"><mat-icon>person_add</mat-icon>Add Employee</button>
 </div>
 <mat-form-field appearance="standard">
   <mat-label>Filter</mat-label>
@@ -63,8 +63,8 @@
   </table>
 
   <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-                 showFirstLastButtons
-                 aria-label="Select page of periodic elements">
+                showFirstLastButtons
+                aria-label="Select page of periodic elements">
   </mat-paginator>
 </div>
 

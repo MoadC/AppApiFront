@@ -63,7 +63,7 @@
       <input matInput placeholder="UserName" formControlName="userName">
       <mat-icon matSuffix *ngIf="AddEmployeeForm.get('userName').valid">sentiment_very_satisfied</mat-icon>
       <mat-icon matSuffix *ngIf="AddEmployeeForm.get('userName').invalid">sentiment_very_dissatisfied</mat-icon>
-      <mat-hint>Hint</mat-hint>
+      <mat-hint style="color: red;">{{smth ? 'Username is Taken*' : ''}} </mat-hint>
     </mat-form-field>
     <mat-form-field appearance="outline"  style="margin-left: 9px" [hidden]="editMode" >
       <mat-label>Password</mat-label>

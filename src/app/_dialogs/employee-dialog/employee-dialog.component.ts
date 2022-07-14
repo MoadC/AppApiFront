@@ -13,19 +13,19 @@ import Swal from 'sweetalert2/dist/sweetalert2.all.js';
 })
 export class EmployeeDialogComponent implements OnInit {
 
-   editMode : boolean = false;
-   AddEmployeeForm: FormGroup;
-   @ViewChild('pass') pass;
-   First_Name ='';
-   Last_Name ='';
-   Gender ='';
-   Phone_Number ='';
-   EmployeeType ='';
-   Type_Equipe ='';
-   Email ='';
-   UserName ='';
-   Password = '';
-   getuserName : boolean = false;
+  editMode : boolean = false;
+  AddEmployeeForm: FormGroup;
+  @ViewChild('pass') pass;
+  First_Name ='';
+  Last_Name ='';
+  Gender ='';
+  Phone_Number ='';
+  EmployeeType ='';
+  Type_Equipe ='';
+  Email ='';
+  UserName ='';
+  Password = '';
+  smth : boolean = false;
 
   types = ['Assistant', 'ChefEquipe'];
   genders = ['Male', 'Female'];
@@ -48,12 +48,12 @@ export class EmployeeDialogComponent implements OnInit {
 
   onSubmit() {
     if (this.editMode) {
-       this.employeeService.UpdateEmployee(this.data.element.id, this.AddEmployeeForm.value)
-         .subscribe(employees =>{
-           console.log("employees", employees);
-           this.editMode=false;
-           this.dialogRef.close(employees);
-         });
+      this.employeeService.UpdateEmployee(this.data.element.id, this.AddEmployeeForm.value)
+        .subscribe(employees =>{
+          console.log("employees", employees);
+          this.editMode=false;
+          this.dialogRef.close(employees);
+        });
       Swal.fire({
         toast: true,
         position: 'top-end',
@@ -69,16 +69,12 @@ export class EmployeeDialogComponent implements OnInit {
           console.log("employees", employees);
           this.editMode=false;
           this.dialogRef.close(employees);
+          this.smth=false;
+        },
+        error => {
+          console.log(error);
+          this.smth =true;
         });
-      Swal.fire({
-        toast: true,
-        position: 'top-end',
-        icon: 'success',
-        title: 'New Record Added',
-        text: 'The new Employee has been added to the list',
-        showConfirmButton: false,
-        timer: 1800
-      })
     }
   }
 
