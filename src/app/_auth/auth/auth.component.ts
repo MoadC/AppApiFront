@@ -12,9 +12,11 @@ export class AuthComponent implements OnInit {
 
   constructor(private authService : AuthGuardService ) { }
   @ViewChild('pass') pass;
-   isAuthenticated : boolean;
+   isAuthenticated : boolean ;
   name = '';
   role = '';
+  msg = 'Sign In Please :';
+  test : boolean ;
 
    user = {
      userName: "test1",
@@ -24,7 +26,6 @@ export class AuthComponent implements OnInit {
   authForm : FormGroup
   username : string = '';
   password : string = '';
-  hide: boolean = true;
 
   ngOnInit(): void {
      this.authService.currentUser$.subscribe(user =>{
@@ -32,14 +33,19 @@ export class AuthComponent implements OnInit {
        this.role = user?.roles[0];
        this.isAuthenticated = !!user;
        this.authService.login(this.isAuthenticated);
-     })
+     });
     this.initForm();
   }
 
   onSubmit() {
     console.log(this.authForm.value);
     this.login(this.authForm.value);
-    this.authForm.reset();
+    setTimeout(()=>{
+      if(this.authForm.valid)
+      this.authForm.reset();
+      this.msg  ='Invalid Credentials ! ';
+    },200);
+
   }
   initForm(){
     this.authForm = new FormGroup({

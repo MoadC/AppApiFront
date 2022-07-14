@@ -119,7 +119,4 @@ export class EmployeeDialogComponent implements OnInit {
       this.pass.nativeElement.type = 'password';
     }
   }
-
-
-
 }
