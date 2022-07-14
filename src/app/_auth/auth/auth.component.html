@@ -25,18 +25,21 @@
 <ng-template #test style="margin-left: 50%;margin-top: 50%"><div>
   <h1>
     Welcome {{name}},<br>
-    i hope you having a good day.
+    I hope you are having a great day.
     you should have access to the following sections :
   </h1>
 </div>
   <ng-container *ngIf="role === 'Assistant'">
-
+      <button routerLink="/beneficiary" mat-button color="primary">Beneficiaries</button>
   </ng-container>
   <ng-container *ngIf="role === 'ChefEquipe'">
-
+      <button routerLink="/beneficiary" mat-raised-button color="primary" class="mr-2">Beneficiaries</button>
+      <button routerLink="/location" mat-raised-button color="primary" class="mr-2">Locations</button>
+      <button routerLink="/activity" mat-raised-button color="primary">Activities</button>
   </ng-container>
   <ng-container *ngIf="role === 'Admin'">
-
+      <button routerLink="/employee" mat-raised-button color="primary" class="mr-2">Employees</button>
+      <button routerLink="/service" mat-raised-button color="primary" class="mr-2">Services</button>
   </ng-container>
 
 </ng-template>

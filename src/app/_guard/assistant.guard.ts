@@ -13,7 +13,7 @@ export class AssistantGuard implements CanActivate {
   canActivate(): Observable<boolean> {
     return this.authGuardService.currentUser$.pipe(
       map(user => {
-        if (user.roles.includes('Assistant')) {
+        if (user.roles.includes('Assistant') || user.roles.includes('ChefEquipe')) {
           return true;
         }else {
           this.router.navigate(['/unauthorized']);
