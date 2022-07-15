@@ -36,8 +36,8 @@ export class LocationDashboardComponent implements OnInit,AfterViewInit {
   openDialog() {
     const dialogRef = this.dialog.open(LocationDialogComponent, {
       disableClose: true,
-      width: '50vw',
-      height: '50vh'
+      width: '380px',
+      height: '320px',
     });
     dialogRef.afterClosed().subscribe(data => {
       this.dataSource.data=data;
@@ -83,8 +83,8 @@ export class LocationDashboardComponent implements OnInit,AfterViewInit {
     console.log(element);
     const dialogRef = this.dialog.open(LocationDialogComponent, {
       disableClose: true,
-      width: '50vw',
-      height: '50vh',
+      width: '380px',
+      height: '320px',
       data: {
         element: element
       }

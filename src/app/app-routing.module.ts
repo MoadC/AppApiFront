@@ -13,7 +13,6 @@ import {AssistantGuard} from "./_guard/assistant.guard";
 import { AdminGuard } from './_guard/admin.guard';
 import { ChefEquipeGuard } from './_guard/chef-equipe.guard';
 
-
 const routes: Routes = [
 
   {path : '' , component : WelcomeComponent,pathMatch : 'full'},
@@ -22,7 +21,7 @@ const routes: Routes = [
   {path : 'employee' , component : EmployeDashboardComponent , canActivate : [AuthGuard, AdminGuard] },
   {path : 'service' , component : ServiceDashboardComponent , canActivate : [AuthGuard, AdminGuard ]},
   {path : 'location' , component : LocationDashboardComponent , canActivate : [AuthGuard, ChefEquipeGuard]},
-  {path : 'beneficiary' , component : BeneficierDashboardComponent , canActivate : [AuthGuard , ChefEquipeGuard ,AssistantGuard]},
+  {path : 'beneficiary' , component : BeneficierDashboardComponent , canActivate : [AuthGuard ,AssistantGuard]},
   {path : 'activity' , component : ActiviteDashboardComponent , canActivate : [AuthGuard, ChefEquipeGuard ] },
   {path : '**' , redirectTo:'' },
 

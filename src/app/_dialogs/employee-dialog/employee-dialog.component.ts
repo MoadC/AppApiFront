@@ -30,8 +30,6 @@ export class EmployeeDialogComponent implements OnInit {
   types = ['Assistant', 'ChefEquipe'];
   genders = ['Male', 'Female'];
   Services: Service[]= [];
-  usernames : any[] = [];
-  //Services = ['service1','service2',"service3"];
 
 
   constructor(private employeeService : EmployeeService,

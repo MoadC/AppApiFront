@@ -8,8 +8,5 @@ export interface Beneficiaire {
         email: string;
         birthDate: Date;
         vulnerability: string;
-        localId: number;
-
-
-
+        locationId: number;
 }

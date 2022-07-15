@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Beneficiaire } from '../_interfaces/beneficiaire';
+import {LocationInterface} from "../_interfaces/locationInterface";
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,7 @@ export class BeneficiaireService {
     return this.http.put<Beneficiaire[]>("https://localhost:5001/api/Immigrant/"+id,beneficiaire);
   }
 
-  getLocations(): Observable<Location[]> {
-    return this.http.get<Location[]>("https://localhost:5001/api/Location/All_Locations");
+  getLocations(): Observable<LocationInterface[]> {
+    return this.http.get<LocationInterface[]>("https://localhost:5001/api/Location/All_Locations");
   }
 }

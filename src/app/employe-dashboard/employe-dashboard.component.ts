@@ -41,20 +41,24 @@ export class EmployeDashboardComponent implements OnInit , AfterViewInit{
   openDialog() {
     const dialogRef = this.dialog.open(EmployeeDialogComponent,{
       disableClose: true,
-      width : '40vw',
-      height : '47vh',
+      width : '770px',
+      height : '450px',
     });
     dialogRef.afterClosed().subscribe( data => {
-        this.dataSource.data = data;
-        Swal.fire({
-        toast: true,
-        position: 'top-end',
-        icon: 'success',
-        title: 'New Record Added',
-        text: 'The new Employee has been added to the list',
-        showConfirmButton: false,
-        timer: 2500
-      })
+        if(this.dataSource.data.length != data.length){
+          this.dataSource.data = data;
+          Swal.fire({
+            toast: true,
+            position: 'top-end',
+            icon: 'success',
+            title: 'New Record Added',
+            text: 'The new Employee has been added to the list',
+            showConfirmButton: false,
+            timer: 2500
+          })
+        }else {
+          this.dataSource.data = data;
+        }
     });
   }
   removeEmployee(id: number) {
@@ -97,8 +101,8 @@ export class EmployeDashboardComponent implements OnInit , AfterViewInit{
     console.log(element);
     const dialogRef = this.dialog.open(EmployeeDialogComponent,{
       disableClose: true,
-      width : '60vw',
-      height : '70vh',
+      width : '770px',
+      height : '450px',
       data : {
         element : element,
       }
