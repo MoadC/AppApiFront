@@ -16,7 +16,7 @@ export class AuthComponent implements OnInit {
   name = '';
   role = '';
   msg = 'Sign In Please :';
-  test : boolean ;
+  test : boolean  =false;
 
    user = {
      userName: "test1",
@@ -26,6 +26,7 @@ export class AuthComponent implements OnInit {
   authForm : FormGroup
   username : string = '';
   password : string = '';
+  spinner: boolean = false;
 
   ngOnInit(): void {
      this.authService.currentUser$.subscribe(user =>{
@@ -38,14 +39,14 @@ export class AuthComponent implements OnInit {
   }
 
   onSubmit() {
+    this.spinner = true;
     console.log(this.authForm.value);
     this.login(this.authForm.value);
     setTimeout(()=>{
-      if(this.authForm.valid)
+      this.spinner=false;
       this.authForm.reset();
       this.msg  ='Invalid Credentials ! ';
-    },200);
-
+    },1200);
   }
   initForm(){
     this.authForm = new FormGroup({
