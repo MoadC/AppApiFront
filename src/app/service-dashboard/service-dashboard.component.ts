@@ -36,8 +36,8 @@ export class ServiceDashboardComponent implements OnInit,AfterViewInit {
   openDialog() {
     const dialogRef = this.dialog.open(ServiceDialogComponent, {
       disableClose: true,
-      width: '50vw',
-      height: '30vh'
+      width: '350px',
+      height: '250px',
     });
     dialogRef.afterClosed().subscribe(data => {
       this.dataSource.data = data;
@@ -83,8 +83,8 @@ export class ServiceDashboardComponent implements OnInit,AfterViewInit {
     console.log(element);
     const dialogRef = this.dialog.open(ServiceDialogComponent, {
       disableClose: true,
-      width: '50vw',
-      height: '30vh',
+      width: '350px',
+      height: '250px',
       data: {
         element: element
       }

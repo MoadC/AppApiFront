@@ -91,7 +91,7 @@ export class BeneficiaireDialogComponent implements OnInit {
       this.vulnerability = this.data.element.vulnerability;
       this.nationality = this.data.element.nationality;
       this.Email = this.data.element.email;
-      this.localId = this.data.element.localId;
+      this.localId = this.data.element.locationId;
       this.birthDate=this.data.element.birthDate;
       }
 

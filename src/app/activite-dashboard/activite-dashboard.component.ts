@@ -38,8 +38,8 @@ export class ActiviteDashboardComponent implements OnInit,AfterViewInit {
   openDialog() {
     const dialogRef = this.dialog.open(ActivityDialogComponent, {
       disableClose: true,
-      width: '40vw',
-      height: '35vh'
+      width: '600px',
+      height: '400px',
     });
     dialogRef.afterClosed().subscribe(data => {
       this.dataSource.data = data;
@@ -85,8 +85,8 @@ export class ActiviteDashboardComponent implements OnInit,AfterViewInit {
     console.log(element);
     const dialogRef = this.dialog.open(ActivityDialogComponent, {
       disableClose: true,
-      width: '70vw',
-      height: '50vh',
+      width: '600px',
+      height: '400px',
       data: {
         element: element
       }
@@ -103,5 +103,4 @@ export class ActiviteDashboardComponent implements OnInit,AfterViewInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-
 }

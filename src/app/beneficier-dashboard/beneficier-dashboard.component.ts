@@ -46,8 +46,8 @@ export class BeneficierDashboardComponent implements OnInit,AfterViewInit {
   openDialog() {
     const dialogRef = this.dialog.open(BeneficiaireDialogComponent,{
       disableClose: true,
-      width : '60vw',
-      height : '70vh'
+      width : '770px',
+      height : '450px',
     });
     dialogRef.afterClosed().subscribe( data => {
       this.dataSource.data=data;
@@ -93,8 +93,8 @@ export class BeneficierDashboardComponent implements OnInit,AfterViewInit {
     console.log(element);
     const dialogRef = this.dialog.open(BeneficiaireDialogComponent,{
       disableClose: true,
-      width : '60vw',
-      height : '70vh',
+      width : '770px',
+      height : '450px',
       data : {
         element : element
       }
